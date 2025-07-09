@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Services | Clouds Modern SPC</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .logo {
+      max-height: 50px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      nav ul.nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px 0;
+      }
+      nav ul.nav-links.active {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
+      <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="quality.html">Quality & Safety</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section" data-aos="fade-up">
+      <h1>Our Services</h1>
+      <p>Clouds Modern SPC provides a wide range of engineering and construction services tailored to the demands of industrial and commercial clients.</p>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+      <h2>Core Engineering & Structural Services</h2>
+      <ul>
+        <li>Civil Construction & Infrastructure Works</li>
+        <li>Structural Repair & Reinforcement</li>
+        <li>Welding Services (including fabrication)</li>
+        <li>Carpentry</li>
+        <li>Aluminum Works</li>
+        <li>Settlement Solution Systems</li>
+        <li>Interior Finishing</li>
+        <li>Demolition & Reconstruction Support</li>
+        <li>Manpower Supply</li>
+        <li>Floor Restoration</li>
+      </ul>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+      <h2>Protective & Coating Solutions</h2>
+      <ul>
+        <li>Epoxy Coating (Industrial Floors & Surfaces)</li>
+        <li>Fire-Rated Coating Systems</li>
+        <li>Surface Priming & Sealing</li>
+        <li>Waterproofing Systems</li>
+      </ul>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+      <h2>Chemical & Engineering Treatments</h2>
+      <ul>
+        <li>Reinforcement of Deteriorated Concrete Structures</li>
+        <li>Remediation of Chronic Cracks</li>
+        <li>Anti-Corrosion Treatments</li>
+        <li>Application of Chemical Additives (Durability Enhancement)</li>
+      </ul>
+    </section>
+
+    <section class="section" data-aos="fade-up">
+      <h2>Utility & Mechanical Services</h2>
+      <ul>
+        <li>Electrical Infrastructure Integration</li>
+        <li>Plumbing & Sanitary Work</li>
+        <li>Road & Pavement Surface Protection</li>
+        <li>HVAC (Heating, Ventilation & Air Conditioning) Support</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Clouds Modern SPC. All rights reserved.</p>
+      <p>📞 +968 97666695 | 📧 mc4info@yahoo.com | 🏢 Sohar, North Al Batinah, Oman</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

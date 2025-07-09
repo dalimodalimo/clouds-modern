@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Projects | Clouds Modern SPC</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .logo {
+      max-height: 50px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      nav ul.nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px 0;
+      }
+      nav ul.nav-links.active {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
+      <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="quality.html">Quality & Safety</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section" data-aos="fade-up">
+      <h1>Our Projects</h1>
+      <p>A glimpse into our recent work that highlights our capabilities in engineering and construction.</p>
+    </section>
+
+    <section class="projects-grid" data-aos="fade-up">
+      <div class="project-item">
+        <h2>Rehabilitation & Building of Store</h2>
+        <p>Project for MB Holding Co. involving full structural rehabilitation and new facility construction.</p>
+      </div>
+      <div class="project-item">
+        <h2>RIB RAB Works</h2>
+        <p>Custom structural and finish works as part of industrial development support.</p>
+      </div>
+      <div class="project-item">
+        <h2>Decoration & Interior Works</h2>
+        <p>Interior enhancement and space optimization projects for commercial buildings.</p>
+      </div>
+      <div class="project-item">
+        <h2>Fuel Tank Construction (PDO Specifications)</h2>
+        <p>Specialized engineering and safety-compliant construction of fuel storage systems.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Clouds Modern SPC. All rights reserved.</p>
+      <p>📞 +968 97666695 | 📧 mc4info@yahoo.com | 🏢 Sohar, North Al Batinah, Oman</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>

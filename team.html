@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Team | Clouds Modern SPC</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .logo {
+      max-height: 50px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      nav ul.nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        width: 100%;
+        margin-top: 10px;
+        padding: 10px 0;
+      }
+      nav ul.nav-links.active {
+        display: flex;
+      }
+    }
+  </style>
+  
+  <style>
+
+    
+
+    .team-section {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+    .team-member {
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f4f4f4;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+    .team-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .team-role {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    .team-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      .team-member {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
+      <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="quality.html">Quality & Safety</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container team-section">
+    <h1 data-aos="fade-up">Meet Our Team</h1>
+    <div class="team-grid">
+      <div class="team-member" data-aos="zoom-in">
+        <img src="image/issa.png" alt="Issa Sabbar" class="team-photo" />
+        <div class="team-role">General Manager</div>
+        <div class="team-name">Issa Sabbar</div>
+      </div>
+      <div class="team-member" data-aos="zoom-in">
+        <img src="image/gupta.png" alt="Gupta" class="team-photo" />
+        <div class="team-role">Project Manager</div>
+        <div class="team-name">Gupta</div>
+      </div>
+      <div class="team-member" data-aos="zoom-in">
+        <img src="image/ayoob.png" alt="Ayoob" class="team-photo" />
+        <div class="team-role">Project Engineer</div>
+        <div class="team-name">Ayoob</div>
+      </div>
+      <div class="team-member" data-aos="zoom-in">
+        <img src="image/nagesh.png" alt="Ngesg" class="team-photo" />
+        <div class="team-role">Project Supervisor</div>
+        <div class="team-name">nagesh</div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Clouds Modern SPC. All rights reserved.</p>
+      <p>📞 +968 97666695 | 📧 mc4info@yahoo.com | 🏢 Sohar, North Al Batinah, Oman</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
