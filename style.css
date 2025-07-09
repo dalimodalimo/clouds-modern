@@ -117,4 +117,9 @@ footer {
   .hero p {
     font-size: 1rem;
   }
+
+  .image-slider:hover {
+  animation-play-state: paused;
+}
+
 }

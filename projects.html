@@ -61,9 +61,74 @@
       }
     }
   </style>
+  <style>
+    .project-block {
+      margin-bottom: 60px;
+    }
+    .project-block h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .project-block p {
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+    .image-slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      scroll-behavior: smooth;
+    }
+    .image-slider::-webkit-scrollbar {
+      display: none;
+    }
+    .image-slider img {
+      flex: 0 0 auto;
+      width: 250px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  </style>
+  <style>
+    .project-block {
+      margin-bottom: 60px;
+    }
+    .project-block h2 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    .project-block p {
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+    .image-slider {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      scroll-behavior: smooth;
+    }
+    .image-slider::-webkit-scrollbar {
+      display: none;
+    }
+    .image-slider img {
+      flex: 0 0 auto;
+      width: 250px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    @keyframes slideImages {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .image-slider.auto-scroll {
+      animation: slideImages 30s linear infinite;
+    }
+  </style>
 </head>
 <body>
-  <header>
+ <header>
     <div class="container header-container">
       <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
       <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
@@ -86,29 +151,51 @@
   </header>
 
   <main class="container">
-    <section class="section" data-aos="fade-up">
-      <h1>Our Projects</h1>
-      <p>A glimpse into our recent work that highlights our capabilities in engineering and construction.</p>
-    </section>
+    <h1 data-aos="fade-up">Our Projects</h1>
 
-    <section class="projects-grid" data-aos="fade-up">
-      <div class="project-item">
-        <h2>Rehabilitation & Building of Store</h2>
-        <p>Project for MB Holding Co. involving full structural rehabilitation and new facility construction.</p>
+    <div class="project-block" data-aos="fade-up">
+      <h2>Rehabilitation & Building of Store</h2>
+      <p>Full structural rehabilitation and new facility construction for MB Holding Co., demonstrating our excellence in structural work and compliance.</p>
+      <div class="image-slider auto-scroll">
+
+        <img src="https://via.placeholder.com/250x150" alt="Project Image 1" />
+        <img src="https://via.placeholder.com/250x150" alt="Project Image 2" />
+        <img src="https://via.placeholder.com/250x150" alt="Project Image 3" />
+        <img src="https://via.placeholder.com/250x150" alt="Project Image 4" />
+        <img src="https://via.placeholder.com/250x150" alt="Project Image 5" />
+        <img src="https://via.placeholder.com/250x150" alt="Project Image 6" />
       </div>
-      <div class="project-item">
-        <h2>RIB RAB Works</h2>
-        <p>Custom structural and finish works as part of industrial development support.</p>
+    </div>
+
+    <div class="project-block" data-aos="fade-up">
+      <h2>Interior Decoration & Finishing</h2>
+      <p>Commercial and residential interior projects focused on elegance and functionality, using modern carpentry and aluminum solutions.</p>
+      <div class="image-slider auto-scroll">
+
+        <img src="image/project/Decoration and interior works/1.jpeg" alt="Project Image 1" />
+        <img src="image/project/Decoration and interior works/2.jpeg" alt="Project Image 2" />
+        <img src="image/project/Decoration and interior works/3.jpeg" alt="Project Image 3" />
+        <img src="image/project/Decoration and interior works/4.jpeg" alt="Project Image 4" />
+        <img src="image/project/Decoration and interior works/5.jpeg" alt="Project Image 5" />
+        <img src="image/project/Decoration and interior works/6.jpeg" alt="Project Image 6" />
+        
       </div>
-      <div class="project-item">
-        <h2>Decoration & Interior Works</h2>
-        <p>Interior enhancement and space optimization projects for commercial buildings.</p>
+    </div>
+
+    <div class="project-block" data-aos="fade-up">
+      <h2>Fuel Tank Construction (PDO Specifications)</h2>
+      <p>Design and construction of fuel storage infrastructure in accordance with Petroleum Development Oman (PDO) safety and performance standards.</p>
+      <div class="image-slider auto-scroll">
+
+        <img src="image/project/Decoration and interior works/1.jpeg" alt="Project Image 1" />
+        <img src="image/project/Decoration and interior works/2.jpeg" alt="Project Image 2" />
+        <img src="image/project/Decoration and interior works/3.jpeg" alt="Project Image 3" />
+        <img src="image/project/Decoration and interior works/4.jpeg" alt="Project Image 4" />
+        <img src="image/project/Decoration and interior works/5.jpeg" alt="Project Image 5" />
+        <img src="image/project/Decoration and interior works/6.jpeg" alt="Project Image 6" />
+        
       </div>
-      <div class="project-item">
-        <h2>Fuel Tank Construction (PDO Specifications)</h2>
-        <p>Specialized engineering and safety-compliant construction of fuel storage systems.</p>
-      </div>
-    </section>
+    </div>
   </main>
 
   <footer>
