@@ -8,6 +8,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+    .service-section {
+      position: relative;
+      padding: 80px 20px;
+      color: #fff;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .service-section .mask {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 0;
+    }
+    .service-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+    }
+    .service-content h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .service-content p, .service-content ul {
+      font-size: 1rem;
+    }
+    .service-content ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 20px;
+    }
+    .service-content ul li {
+      margin: 10px 0;
+    }
+    .mask-white {
+      background: rgba(255,255,255,0.85);
+      color: #000;
+    }
+    @media (max-width: 768px) {
+      .service-content h2 {
+        font-size: 1.5rem;
+      }
+      .service-content p, .service-content ul {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+  <style>
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -61,6 +112,7 @@
       }
     }
   </style>
+
 </head>
 <body>
   <header>
@@ -85,56 +137,71 @@
     </div>
   </header>
 
-  <main class="container">
-    <section class="section" data-aos="fade-up">
-      <h1>Our Services</h1>
-      <p>Clouds Modern SPC provides a wide range of engineering and construction services tailored to the demands of industrial and commercial clients.</p>
+  <main>
+    <section class="service-section" style="background-image: url('image/services.jpeg')" data-aos="fade-up">
+      <div class="mask"></div>
+      <div class="service-content">
+        <h1>Our Services</h1>
+        <p>Clouds Modern SPC provides a wide range of engineering and construction services tailored to the demands of industrial and commercial clients.</p>
+      </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-      <h2>Core Engineering & Structural Services</h2>
-      <ul>
-        <li>Civil Construction & Infrastructure Works</li>
-        <li>Structural Repair & Reinforcement</li>
-        <li>Welding Services (including fabrication)</li>
-        <li>Carpentry</li>
-        <li>Aluminum Works</li>
-        <li>Settlement Solution Systems</li>
-        <li>Interior Finishing</li>
-        <li>Demolition & Reconstruction Support</li>
-        <li>Manpower Supply</li>
-        <li>Floor Restoration</li>
-      </ul>
+    <section class="service-section mask-white" style="background-image: url('image/bg/structure.jpg')" data-aos="fade-up">
+      <div class="mask mask-white"></div>
+      <div class="service-content">
+        <h2>Core Engineering & Structural Services</h2>
+        <ul>
+          <li>Civil Construction & Infrastructure Works</li>
+          <li>Structural Repair & Reinforcement</li>
+          <li>Welding Services (including fabrication)</li>
+          <li>Carpentry</li>
+          <li>Aluminum Works</li>
+          <li>Settlement Solution Systems</li>
+          <li>Interior Finishing</li>
+          <li>Demolition & Reconstruction Support</li>
+          <li>Manpower Supply</li>
+          <li>Floor Restoration</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-      <h2>Protective & Coating Solutions</h2>
-      <ul>
-        <li>Epoxy Coating (Industrial Floors & Surfaces)</li>
-        <li>Fire-Rated Coating Systems</li>
-        <li>Surface Priming & Sealing</li>
-        <li>Waterproofing Systems</li>
-      </ul>
+    <section class="service-section" style="background-image: url('image/Protective.jpeg')" data-aos="fade-up">
+      <div class="mask"></div>
+      <div class="service-content">
+        <h2>Protective & Coating Solutions</h2>
+        <ul>
+          <li>Epoxy Coating (Industrial Floors & Surfaces)</li>
+          <li>Fire-Rated Coating Systems</li>
+          <li>Surface Priming & Sealing</li>
+          <li>Waterproofing Systems</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-      <h2>Chemical & Engineering Treatments</h2>
-      <ul>
-        <li>Reinforcement of Deteriorated Concrete Structures</li>
-        <li>Remediation of Chronic Cracks</li>
-        <li>Anti-Corrosion Treatments</li>
-        <li>Application of Chemical Additives (Durability Enhancement)</li>
-      </ul>
+    <section class="service-section mask-white" style="background-image: url('image/bg/concrete.jpg')" data-aos="fade-up">
+      <div class="mask mask-white"></div>
+      <div class="service-content">
+        <h2>Chemical & Engineering Treatments</h2>
+        <ul>
+          <li>Reinforcement of Deteriorated Concrete Structures</li>
+          <li>Remediation of Chronic Cracks</li>
+          <li>Anti-Corrosion Treatments</li>
+          <li>Application of Chemical Additives (Durability Enhancement)</li>
+        </ul>
+      </div>
     </section>
 
-    <section class="section" data-aos="fade-up">
-      <h2>Utility & Mechanical Services</h2>
-      <ul>
-        <li>Electrical Infrastructure Integration</li>
-        <li>Plumbing & Sanitary Work</li>
-        <li>Road & Pavement Surface Protection</li>
-        <li>HVAC (Heating, Ventilation & Air Conditioning) Support</li>
-      </ul>
+    <section class="service-section" style="background-image: url('image/electric.jpeg')" data-aos="fade-up">
+      <div class="mask"></div>
+      <div class="service-content">
+        <h2>Utility & Mechanical Services</h2>
+        <ul>
+          <li>Electrical Infrastructure Integration</li>
+          <li>Plumbing & Sanitary Work</li>
+          <li>Road & Pavement Surface Protection</li>
+          <li>HVAC (Heating, Ventilation & Air Conditioning) Support</li>
+        </ul>
+      </div>
     </section>
   </main>
 
