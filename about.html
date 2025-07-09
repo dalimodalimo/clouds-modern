@@ -8,6 +8,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+    .about-section {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+    }
+    .about-section.reverse {
+      flex-direction: row-reverse;
+    }
+    .about-image {
+      flex: 1;
+      max-width: 300px;
+    }
+    .about-image img {
+      width: 100%;
+      border-radius: 50% 50% 50% 50%;
+      object-fit: cover;
+    }
+    .about-text {
+      flex: 2;
+    }
+    .about-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+    .about-text p, .about-text ul {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .about-text ul {
+      padding-left: 20px;
+    }
+  </style>
+  <style>
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -61,9 +96,10 @@
       }
     }
   </style>
+  
 </head>
 <body>
- <header>
+  <header>
     <div class="container header-container">
       <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
       <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
@@ -86,37 +122,64 @@
   </header>
 
   <main class="container">
-    <section class="section" data-aos="fade-up">
-      <h1>About Us</h1>
-      <p>Clouds Modern SPC is a leading provider of specialized engineering services across Oman, delivering innovative and reliable solutions tailored to complex industrial needs. Our team of skilled engineers and technicians is dedicated to meeting the unique needs of each project.</p>
-    </section>
+    <div class="about-section" data-aos="fade-up">
+      <div class="about-image">
+        <img src="image/about us.png" alt="About Us">
+      </div>
+      <div class="about-text">
+        <h1>About Us</h1>
+        <p>Clouds Modern SPC is a leading provider of specialized engineering services across Oman, delivering innovative and reliable solutions tailored to complex industrial needs. Our team of skilled engineers and technicians is dedicated to meeting the unique needs of each project.</p>
+      </div>
+    </div>
 
-    <section class="section" data-aos="fade-up">
-      <h2>Vision</h2>
-      <p>To be a leading provider of specialized engineering services, continuously innovating and improving offerings to meet the evolving needs of the construction and infrastructure industries.</p>
+    <div class="about-section reverse" data-aos="fade-left">
+      <div class="about-image">
+        <img src="image/vision.jpg" alt="Vision">
+      </div>
+      <div class="about-text">
+        <h2>Vision</h2>
+        <p>To be a leading provider of specialized engineering services, continuously innovating and improving offerings to meet the evolving needs of the construction and infrastructure industries.</p>
+      </div>
+    </div>
 
-      <h2>Mission</h2>
-      <p>To deliver high-quality, reliable engineering solutions tailored to the unique needs of each project, ensuring customer satisfaction through expertise in waterproofing, epoxy coating, fire-rated coating, chemical treatments, and structural repairs.</p>
-    </section>
+    <div class="about-section" data-aos="fade-right">
+      <div class="about-image">
+        <img src="image/Mission.jpg" alt="Mission">
+      </div>
+      <div class="about-text">
+        <h2>Mission</h2>
+        <p>To deliver high-quality, reliable engineering solutions tailored to the unique needs of each project, ensuring customer satisfaction through expertise in waterproofing, epoxy coating, fire-rated coating, chemical treatments, and structural repairs.</p>
+      </div>
+    </div>
 
-    <section class="section" data-aos="fade-up">
-      <h2>Core Values</h2>
-      <ul>
-        <li><strong>Innovation & Quality:</strong> Striving for excellence through advanced technologies and high-quality service delivery.</li>
-        <li><strong>Technical Excellence:</strong> Providing expert solutions in waterproofing, coatings, structural repairs, and advanced engineering techniques.</li>
-        <li><strong>Customer-Centric Approach:</strong> Ensuring reliability, efficiency, and tailored solutions to meet client expectations.</li>
-        <li><strong>Sustainable & Reliable Service:</strong> Upholding high standards in efficiency, safety, and long-term reliability.</li>
-      </ul>
-    </section>
+    <div class="about-section reverse" data-aos="fade-left">
+      <div class="about-image">
+        <img src="image/Core Values.jpg" alt="Core Values">
+      </div>
+      <div class="about-text">
+        <h2>Core Values</h2>
+        <ul>
+          <li><strong>Innovation & Quality:</strong> Striving for excellence through advanced technologies and high-quality service delivery.</li>
+          <li><strong>Technical Excellence:</strong> Providing expert solutions in waterproofing, coatings, structural repairs, and advanced engineering techniques.</li>
+          <li><strong>Customer-Centric Approach:</strong> Ensuring reliability, efficiency, and tailored solutions to meet client expectations.</li>
+          <li><strong>Sustainable & Reliable Service:</strong> Upholding high standards in efficiency, safety, and long-term reliability.</li>
+        </ul>
+      </div>
+    </div>
 
-    <section class="section" data-aos="fade-up">
-      <h2>Our Goals</h2>
-      <ul>
-        <li>Excellence in engineering solutions for long-term client satisfaction.</li>
-        <li>Investment in innovation and advanced technologies.</li>
-        <li>Client-centric service growth and industry leadership.</li>
-      </ul>
-    </section>
+    <div class="about-section" data-aos="fade-right">
+      <div class="about-image">
+        <img src="image/Our Goals.png" alt="Our Goals">
+      </div>
+      <div class="about-text">
+        <h2>Our Goals</h2>
+        <ul>
+          <li>Excellence in engineering solutions for long-term client satisfaction.</li>
+          <li>Investment in innovation and advanced technologies.</li>
+          <li>Client-centric service growth and industry leadership.</li>
+        </ul>
+      </div>
+    </div>
   </main>
 
   <footer>

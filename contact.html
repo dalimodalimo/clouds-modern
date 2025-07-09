@@ -8,6 +8,49 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+    .contact-section {
+      background-color: #f3f3f3;
+      padding: 50px 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin-top: 40px;
+    }
+    .contact-details ul {
+      list-style: none;
+      padding-left: 0;
+      line-height: 2;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .contact-form label {
+      font-weight: 500;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .contact-form button {
+      background-color: #1e40af;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .contact-form button:hover {
+      background-color: #163090;
+    }
+  </style>
+  <style>
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -63,13 +106,11 @@
   </style>
 </head>
 <body>
- <header>
+  <header>
     <div class="container header-container">
       <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
       <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div></div><div></div><div></div>
       </div>
       <nav>
         <ul class="nav-links">
@@ -86,12 +127,12 @@
   </header>
 
   <main class="container">
-    <section class="section" data-aos="fade-up">
+    <section class="section contact-section" data-aos="fade-up">
       <h1>Contact Us</h1>
       <p>We look forward to working with you. Reach out to us through the following channels or use the form below to send us a message.</p>
     </section>
 
-    <section class="section contact-details" data-aos="fade-up">
+    <section class="section contact-details contact-section" data-aos="fade-up">
       <ul>
         <li><strong>Phone:</strong> +968 97666695</li>
         <li><strong>Email:</strong> mc4info@yahoo.com</li>
@@ -100,9 +141,9 @@
       </ul>
     </section>
 
-    <section class="section" data-aos="fade-up">
+    <section class="section contact-section" data-aos="fade-up">
       <h2>Send Us a Message</h2>
-      <form action="#" method="post" class="contact-form">
+      <form action="https://formspree.io/f/mnqelkgk" method="POST" class="contact-form">
         <label for="name">Your Name:</label>
         <input type="text" id="name" name="name" required>
 
