@@ -49,8 +49,14 @@
     .contact-form button:hover {
       background-color: #163090;
     }
-  </style>
-   <style>
+
+    #formSuccessMessage {
+      color: green;
+      margin-top: 15px;
+      font-weight: bold;
+      display: none;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
@@ -161,7 +167,7 @@
   </style>
 </head>
 <body>
- <header>
+  <header>
     <div class="container header-container">
       <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
       <div class="site-title">CLOUDS MODERN SPC</div>
@@ -201,23 +207,26 @@
 
     <section class="section contact-section" data-aos="fade-up">
       <h2>Send Us a Message</h2>
-      <form action="https://formspree.io/f/mnqelkgk" method="POST" class="contact-form">
+      <form id="contactForm" action="https://formspree.io/f/xblynjlr" method="POST" class="contact-form">
         <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
         <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
         <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
 
         <button type="submit" class="btn">Send Message</button>
       </form>
+      <p id="formSuccessMessage">Your message was sent. We will contact you soon.</p>
     </section>
   </main>
-<a href="https://wa.me/97666695" target="_blank" class="whatsapp-float">
-  <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
-</a>
+
+  <a href="https://wa.me/96897666695" target="_blank" class="whatsapp-float">
+    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+  </a>
+
   <footer>
     <div class="container">
       <p>&copy; 2025 Clouds Modern SPC. All rights reserved.</p>
@@ -228,6 +237,35 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
+  </script>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const successMessage = document.getElementById('formSuccessMessage');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch(form.action, {
+          method: form.method,
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          form.reset();
+          successMessage.style.display = 'block';
+        } else {
+          alert("There was a problem submitting your message. Please try again.");
+        }
+      } catch (error) {
+        alert("Connection error. Please try again later.");
+      }
+    });
   </script>
 </body>
 </html>
