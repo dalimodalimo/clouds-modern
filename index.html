@@ -3,235 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Clouds Modern SPC | Homepage</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Clouds Modern SPC | Engineering Excellence</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      z-index: 999;
-    }
-
-    .menu-toggle div {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-    }
-
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      padding: 10px;
-    }
-
-    .logo {
-      max-height: 60px;
-      width: auto;
-    }
-
-    .site-title {
-      flex: 1;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: white;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      nav ul.nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        border-radius: 10px;
-        padding: 10px 0;
-        z-index: 998;
-        animation: fadeIn 0.3s ease-in-out;
-      }
-
-      nav ul.nav-links.active {
-        display: flex;
-      }
-
-      .nav-links li {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-        border-bottom: 1px solid white;
-      }
-
-      .nav-links li:last-child {
-        border-bottom: none;
-      }
-
-      .nav-links li a {
-        color: white;
-        font-size: 18px;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    }
-
-    .testimonials {
-      background: #f8f9fa;
-      padding: 50px 20px;
-      text-align: center;
-    }
-    .testimonial {
-      max-width: 300px;
-      margin: 20px auto;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    .testimonial img {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-    }
-    .stars {
-      color: #ffc107;
-      font-size: 1.2rem;
-    }
-    .testimonial p {
-      font-size: 0.95rem;
-      margin: 10px 0;
-    }
-    .testimonial h4 {
-      font-size: 1rem;
-      font-weight: 700;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="container header-container">
-      <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
-      <div class="site-title">CLOUDS MODERN SPC</div>
-      <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
-        <div></div>
-        <div></div>
-        <div></div>
+
+  <header class="main-header">
+    <div class="container header-flex">
+      <div class="logo-brand">
+        <img src="image/logo.png" alt="Logo" class="site-logo" />
+        <span class="brand-text">CLOUDS <span class="accent-gold">MODERN</span></span>
       </div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="quality.html">Quality & Safety</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+
+      <nav class="desktop-nav">
+  <ul class="nav-links-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="quality.html">Quality & Safety</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+      <div class="menu-toggle" id="mobile-toggle">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
     </div>
   </header>
 
-  <section class="hero" data-aos="fade-up">
+  <div class="mobile-overlay" id="mobile-overlay">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="quality.html">Quality & Safety</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+</div>
+
+  <section class="hero-section">
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+      <h1 data-aos="fade-up" data-aos-delay="100">Specialized Engineering <br><span class="text-gradient">Beyond Limits</span></h1>
+      <p data-aos="fade-up" data-aos-delay="300">Leading experts in construction, waterproofing, and structural preservation across Oman.</p>
+      <div class="hero-btns" data-aos="fade-up" data-aos-delay="500">
+        <a href="services.html" class="btn-primary">Explore Expertise</a>
+        <a href="projects.html" class="btn-secondary">Recent Work</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-grid">
+    <div class="container grid-layout">
+      <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Waterproofing</h3>
+        <p>Advanced membrane and chemical solutions for lifelong protection.</p>
+      </div>
+      <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fas fa-tools"></i>
+        <h3>Structural Repair</h3>
+        <p>Restoring integrity with modern carbon fiber and injection tech.</p>
+      </div>
+      <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-paint-roller"></i>
+        <h3>Special Coatings</h3>
+        <p>Industrial grade epoxy and protective flooring systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonial-section">
     <div class="container">
-      <h1>Leading Specialized Engineering Services Provider</h1>
-      <p>Delivering innovative solutions for construction, waterproofing, coatings, and structural repairs across Oman.</p>
-      <a href="services.html" class="btn">Explore Our Services</a>
+      <h2 class="section-title" data-aos="fade-down">Trusted by Professionals</h2>
+      <div class="t-wrapper">
+        <div class="t-card" data-aos="fade-right">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"Unmatched dedication to quality and safety standards."</p>
+          <h4>Ahmed Al Balushi</h4>
+        </div>
+        <div class="t-card" data-aos="fade-left">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p>"The team delivered the structural project ahead of schedule."</p>
+          <h4>Fatima Al Zadjali</h4>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section" data-aos="zoom-in">
-    <div class="container">
-      <img src="image/1.jpeg" alt="Engineering Innovation" style="width: 100%; height: auto; border-radius: 8px;">
-    </div>
-  </section>
-
-  <section class="section" data-aos="fade-up">
-    <div class="container">
-      <h2>Why Choose Clouds Modern SPC?</h2>
-      <p>With expertise in infrastructure, coatings, and structural engineering, we are committed to delivering high-quality results for every project.</p>
-    </div>
-  </section>
-
-  <section class="testimonials" data-aos="fade-up">
-    <h2>Customer Experience</h2>
-    <div class="testimonial" data-aos="fade-up">
-      <img src="image/man1.png" alt="Client 1">
-      <div class="stars">★★★★★</div>
-      <p>Clouds Modern SPC exceeded our expectations. Their professionalism and dedication were outstanding!</p>
-      <h4>Ahmed Al Balushi</h4>
-    </div>
-    <div class="testimonial" data-aos="fade-up" data-aos-delay="100">
-      <img src="image/women2.png" alt="Client 2">
-      <div class="stars">★★★★★</div>
-      <p>Excellent service and top-quality results. Highly recommended for any construction or coating work.</p>
-      <h4>Fatima Al Zadjali</h4>
-    </div>
-    <div class="testimonial" data-aos="fade-up" data-aos-delay="200">
-      <img src="image/man3.png" alt="Client 3">
-      <div class="stars">★★★★★</div>
-      <p>The team was very responsive and delivered the project on time with great attention to detail.</p>
-      <h4>Khalid Al Hinai</h4>
-    </div>
-  </section>
-
-  <a href="https://wa.me/97666695" target="_blank" class="whatsapp-float">
-    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+  <a href="https://wa.me/97666695" target="_blank" class="whatsapp-modern">
+    <i class="fab fa-whatsapp"></i>
   </a>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Clouds Modern SPC. All rights reserved.</p>
-      <p>📞 +968 97666695 | 📧 mc4info@yahoo.com | 🏢 Sohar, North Al Batinah, Oman</p>
+  <footer class="modern-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>CLOUDS MODERN SPC</h3>
+        <p>Setting the gold standard in specialized engineering.</p>
+      </div>
+      <div class="footer-info">
+        <p><i class="fas fa-phone"></i> +968 97666695</p>
+        <p><i class="fas fa-map-marker-alt"></i> Sohar, North Al Batinah, Oman</p>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      &copy; 2026 Clouds Modern SPC. All Rights Reserved.
     </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({ duration: 1000, once: true });
+
+    // Animated Menu Toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const overlay = document.getElementById('mobile-overlay');
+    
+    mobileToggle.onclick = function() {
+      this.classList.toggle('change');
+      overlay.classList.toggle('open');
+      document.body.classList.toggle('no-scroll');
+    };
   </script>
 </body>
 </html>

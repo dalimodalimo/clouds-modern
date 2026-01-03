@@ -4,239 +4,165 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quality & Safety | Clouds Modern SPC</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      z-index: 999;
-    }
-
-    .menu-toggle div {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-    }
-
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      padding: 10px;
-    }
-
-    .logo {
-      max-height: 60px;
-      width: auto;
-    }
-
-    .site-title {
-      flex: 1;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: white;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      nav ul.nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        border-radius: 10px;
-        padding: 10px 0;
-        z-index: 998;
-        animation: fadeIn 0.3s ease-in-out;
-      }
-
-      nav ul.nav-links.active {
-        display: flex;
-      }
-
-      .nav-links li {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-        border-bottom: 1px solid white;
-      }
-
-      .nav-links li:last-child {
-        border-bottom: none;
-      }
-
-      .nav-links li a {
-        color: white;
-        font-size: 18px;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    }
-
-    .quality-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .quality-section:nth-child(even) {
-      background-color: #ffffff;
-    }
-
-    .quality-section:nth-child(odd) {
-      background-color: #007BFF;
-      color: white;
-    }
-
-    .quality-section img {
-      width: 250px;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .quality-section ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .quality-section ul li {
-      margin: 10px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="container header-container">
-      <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
-      <div class="site-title">CLOUDS MODERN SPC</div>
-      <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
-        <div></div>
-        <div></div>
-        <div></div>
+
+  <header class="main-header">
+    <div class="container header-flex">
+      <div class="logo-brand">
+        <img src="image/logo.png" alt="Logo" class="site-logo" />
+        <span class="brand-text">CLOUDS <span class="accent-gold">MODERN</span></span>
       </div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="quality.html">Quality & Safety</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+
+      <nav class="desktop-nav">
+  <ul class="nav-links-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="quality.html">Quality & Safety</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+      <div class="menu-toggle" id="mobile-toggle">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="quality-section" data-aos="zoom-in">
-      <img src="image/Quality.jpg" alt="Quality">
-      <h2>Quality & Safety</h2>
-      <p>Clouds Modern SPC is committed to the highest standards in workplace safety and quality assurance throughout all phases of our operations.</p>
-    </section>
+  <div class="mobile-overlay" id="mobile-overlay">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="quality.html">Quality & Safety</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+</div>
 
-    <section class="quality-section" data-aos="fade-up">
-      <img src="image/Compliance.jpg" alt="Compliance">
-      <h2>Compliance & Standards</h2>
-      <ul>
-        <li>Adherence to the Environment, Health, and Safety (EHS) Management System</li>
-        <li>Alignment with national and international quality benchmarks</li>
-        <li>Strict enforcement of company safety and quality procedures</li>
-      </ul>
-    </section>
+  <section class="hero-section" style="height: 45vh; min-height: 350px;">
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+      <h1 data-aos="fade-up">Safety First, <br><span class="text-gradient">Quality Always</span></h1>
+      <p data-aos="fade-up" data-aos-delay="200">Our commitment to HSE excellence ensures the protection of our people and the integrity of your assets.</p>
+    </div>
+  </section>
 
-    <section class="quality-section" data-aos="fade-up">
-      <img src="image/Risk.jpeg" alt="Risk Control">
-      <h2>Risk Identification & Hazard Control</h2>
-      <ul>
-        <li>Continuous monitoring of sites to identify and mitigate risks</li>
-        <li>Detailed incident and accident investigations</li>
-        <li>Implementation of Corrective and Preventive Actions (CAPA)</li>
-      </ul>
-    </section>
+  <main class="container" style="padding: 60px 0;">
+    <div class="grid-layout">
+      
+      <div class="feature-card hse-card" data-aos="fade-up">
+        <div class="hse-icon-wrapper">
+          <i class="fas fa-shield-halved"></i>
+        </div>
+        <h3>Quality Assurance</h3>
+        <p>Clouds Modern SPC is committed to the highest standards in workplace safety and quality assurance throughout all phases of our operations.</p>
+      </div>
 
-    <section class="quality-section" data-aos="fade-up">
-      <img src="image/Safety.webp" alt="Training">
-      <h2>Safety Training & Awareness</h2>
-      <ul>
-        <li>Daily safe start meetings with all contractors</li>
-        <li>Regular site safety presentations and awareness sessions</li>
-        <li>Ongoing education to enhance contractor compliance and safety culture</li>
-      </ul>
-    </section>
+      <div class="feature-card hse-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="hse-icon-wrapper">
+          <i class="fas fa-file-contract"></i>
+        </div>
+        <h3>Compliance & Standards</h3>
+        <ul class="service-list">
+          <li>EHS Management System Adherence</li>
+          <li>National & International Quality Benchmarks</li>
+          <li>Strict Enforcement of Safety Procedures</li>
+        </ul>
+      </div>
 
-    <section class="quality-section" data-aos="fade-up">
-      <img src="image/Workplace.png" alt="Responsibility">
-      <h2>Workplace Responsibility</h2>
-      <ul>
-        <li>Enforcing road safety and workplace health rules</li>
-        <li>Promoting personal responsibility for health and safety</li>
-        <li>Maintaining a secure and productive work environment</li>
-      </ul>
-    </section>
+      <div class="feature-card hse-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="hse-icon-wrapper">
+          <i class="fas fa-triangle-exclamation"></i>
+        </div>
+        <h3>Risk Control</h3>
+        <ul class="service-list">
+          <li>Continuous Site Risk Monitoring</li>
+          <li>Incident & Accident Investigations</li>
+          <li>Implementation of CAPA Actions</li>
+        </ul>
+      </div>
+
+      <div class="feature-card hse-card" data-aos="fade-up">
+        <div class="hse-icon-wrapper">
+          <i class="fas fa-user-graduate"></i>
+        </div>
+        <h3>Training & Awareness</h3>
+        <ul class="service-list">
+          <li>Daily Safe Start Meetings</li>
+          <li>Regular Site Safety Presentations</li>
+          <li>Enhanced Safety Culture Education</li>
+        </ul>
+      </div>
+
+      <div class="feature-card hse-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="hse-icon-wrapper">
+          <i class="fas fa-hard-hat"></i>
+        </div>
+        <h3>Workplace Responsibility</h3>
+        <ul class="service-list">
+          <li>Road Safety & Health Rules</li>
+          <li>Promoting Personal Responsibility</li>
+          <li>Secure & Productive Environments</li>
+        </ul>
+      </div>
+
+      <div class="feature-card hse-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="hse-icon-wrapper">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>HSE Performance</h3>
+        <p>We measure our success by the zero-accident goal, ensuring every team member returns home safely every day.</p>
+      </div>
+
+    </div>
   </main>
 
-  <a href="https://wa.me/97666695" target="_blank" class="whatsapp-float">
-    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+  <a href="https://wa.me/97666695" target="_blank" class="whatsapp-modern">
+    <i class="fab fa-whatsapp"></i>
   </a>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Clouds Modern SPC. All rights reserved.</p>
-      <p>📞 +968 97666695 | 📧 mc4info@yahoo.com | 🏢 Sohar, North Al Batinah, Oman</p>
+  <footer class="modern-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3 class="accent-gold">CLOUDS MODERN SPC</h3>
+        <p>Quality Certified Engineering Services.</p>
+      </div>
+      <div class="footer-info">
+        <p><i class="fas fa-phone gold"></i> +968 97666695</p>
+        <p><i class="fas fa-location-dot gold"></i> Sohar, North Al Batinah, Oman</p>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      &copy; 2026 Clouds Modern SPC. All rights reserved.
     </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({ duration: 1000, once: true });
+    
+    const toggle = document.getElementById('mobile-toggle');
+    const overlay = document.getElementById('mobile-overlay');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('change');
+      overlay.classList.toggle('open');
+      document.body.classList.toggle('no-scroll');
+    });
   </script>
+  
 </body>
 </html>

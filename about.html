@@ -4,299 +4,149 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us | Clouds Modern SPC</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <style>
-    /* HIGHLIGHT BOX CSS */
-    .highlight-box {
-      position: relative;
-      padding: 20px;
-      border: 2px solid transparent;
-      transition: border-color 0.3s, background-color 0.3s;
-      border-radius: 10px;
-    }
-    .highlight-box.active {
-      border-color: #007BFF;
-      background-color: rgba(0, 123, 255, 0.05);
-      box-shadow: 0 0 12px rgba(0, 123, 255, 0.2);
-    }
-
-    .about-section {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      margin-bottom: 60px;
-      flex-wrap: wrap;
-    }
-    .about-section.reverse {
-      flex-direction: row-reverse;
-    }
-    .about-image {
-      flex: 1;
-      max-width: 300px;
-    }
-    .about-image img {
-      width: 100%;
-      border-radius: 50% 50% 50% 50%;
-      object-fit: cover;
-    }
-    .about-text {
-      flex: 2;
-    }
-    .about-text h2 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-    }
-    .about-text p, .about-text ul {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-    .about-text ul {
-      padding-left: 20px;
-    }
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      z-index: 999;
-    }
-
-    .menu-toggle div {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-    }
-
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      padding: 10px;
-    }
-
-    .logo {
-      max-height: 60px;
-      width: auto;
-    }
-
-    .site-title {
-      flex: 1;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: white;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      nav ul.nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        border-radius: 10px;
-        padding: 10px 0;
-        z-index: 998;
-        animation: fadeIn 0.3s ease-in-out;
-      }
-
-      nav ul.nav-links.active {
-        display: flex;
-      }
-
-      .nav-links li {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-        border-bottom: 1px solid white;
-      }
-
-      .nav-links li:last-child {
-        border-bottom: none;
-      }
-
-      .nav-links li a {
-        color: white;
-        font-size: 18px;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="container header-container">
-      <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
-      <div class="site-title">CLOUDS MODERN SPC</div>
-      <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
-        <div></div>
-        <div></div>
-        <div></div>
+
+  <header class="main-header">
+    <div class="container header-flex">
+      <div class="logo-brand">
+        <img src="image/logo.png" alt="Logo" class="site-logo" />
+        <span class="brand-text">CLOUDS <span class="accent-gold">MODERN</span></span>
       </div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="quality.html">Quality & Safety</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+
+       <nav class="desktop-nav">
+  <ul class="nav-links-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="quality.html">Quality & Safety</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+      <div class="menu-toggle" id="mobile-toggle">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <div class="about-section" data-aos="fade-up">
-      <div class="about-image">
-        <img src="image/about us.png" alt="About Us">
-      </div>
-      <div class="highlight-box">
-        <div class="about-text">
-          <h1>About Us</h1>
-          <p>Clouds Modern SPC is a leading provider of specialized engineering services across Oman, delivering innovative and reliable solutions tailored to complex industrial needs. Our team of skilled engineers and technicians is dedicated to meeting the unique needs of each project.</p>
-        </div>
-      </div>
-    </div>
+  <div class="mobile-overlay" id="mobile-overlay">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="quality.html">Quality & Safety</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+</div>
 
-    <div class="about-section reverse" data-aos="fade-left">
-      <div class="about-image">
-        <img src="image/vision.png" alt="Vision">
-      </div>
-      <div class="highlight-box">
-        <div class="about-text">
-          <h2>Vision</h2>
+  <section class="hero-section" style="height: 60vh; min-height: 400px;">
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+      <h1 data-aos="fade-up">Building the <br><span class="text-gradient">Future of Engineering</span></h1>
+      <p data-aos="fade-up" data-aos-delay="200">Leading specialized engineering services across Oman with innovation at our core.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-layout">
+        <div class="feature-card" style="grid-column: 1 / -1;" data-aos="fade-up">
+            <i class="fas fa-info-circle"></i>
+            <h3>About Clouds Modern SPC</h3>
+            <p>Clouds Modern SPC is a leading provider of specialized engineering services across Oman, delivering innovative and reliable solutions tailored to complex industrial needs. Our team of skilled engineers and technicians is dedicated to meeting the unique needs of each project.</p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <i class="fas fa-eye"></i>
+          <h3>Our Vision</h3>
           <p>To be a leading provider of specialized engineering services, continuously innovating and improving offerings to meet the evolving needs of the construction and infrastructure industries.</p>
         </div>
-      </div>
-    </div>
 
-    <div class="about-section" data-aos="fade-right">
-      <div class="about-image">
-        <img src="image/Mission.png" alt="Mission">
-      </div>
-      <div class="highlight-box">
-        <div class="about-text">
-          <h2>Mission</h2>
-          <p>To deliver high-quality, reliable engineering solutions tailored to the unique needs of each project, ensuring customer satisfaction through expertise in waterproofing, epoxy coating, fire-rated coating, chemical treatments, and structural repairs.</p>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <i class="fas fa-bullseye"></i>
+          <h3>Our Mission</h3>
+          <p>To deliver high-quality, reliable engineering solutions tailored to the unique needs of each project, ensuring customer satisfaction through expertise in waterproofing, coatings, and structural repairs.</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="about-section reverse" data-aos="fade-left">
-      <div class="about-image">
-        <img src="image/Core Values.png" alt="Core Values">
-      </div>
-      <div class="highlight-box">
-        <div class="about-text">
-          <h2>Core Values</h2>
-          <ul>
-            <li><strong>Innovation & Quality:</strong> Striving for excellence through advanced technologies and high-quality service delivery.</li>
-            <li><strong>Technical Excellence:</strong> Providing expert solutions in waterproofing, coatings, structural repairs, and advanced engineering techniques.</li>
-            <li><strong>Customer-Centric Approach:</strong> Ensuring reliability, efficiency, and tailored solutions to meet client expectations.</li>
-            <li><strong>Sustainable & Reliable Service:</strong> Upholding high standards in efficiency, safety, and long-term reliability.</li>
-          </ul>
+  <section class="section" style="background: rgba(255,255,255,0.02);">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem; font-weight: 800;">Core <span class="accent-gold">Values</span></h2>
+      <div class="grid-layout">
+        <div class="feature-card" data-aos="zoom-in">
+          <i class="fas fa-lightbulb"></i>
+          <h4>Innovation & Quality</h4>
+          <p>Excellence through advanced technologies and high-quality service delivery.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+          <i class="fas fa-microchip"></i>
+          <h4>Technical Excellence</h4>
+          <p>Expert solutions in waterproofing, coatings, and structural repairs.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+          <i class="fas fa-user-check"></i>
+          <h4>Customer Centric</h4>
+          <p>Ensuring reliability, efficiency, and tailored solutions for every client.</p>
+        </div>
+        <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+          <i class="fas fa-leaf"></i>
+          <h4>Sustainability</h4>
+          <p>Upholding high standards in safety and long-term reliability.</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="about-section" data-aos="fade-right">
-      <div class="about-image">
-        <img src="image/Our Goals.png" alt="Our Goals">
-      </div>
-      <div class="highlight-box">
-        <div class="about-text">
-          <h2>Our Goals</h2>
-          <ul>
-            <li>Excellence in engineering solutions for long-term client satisfaction.</li>
-            <li>Investment in innovation and advanced technologies.</li>
-            <li>Client-centric service growth and industry leadership.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <a href="https://wa.me/97666695" target="_blank" class="whatsapp-float">
-    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+  <a href="https://wa.me/97666695" target="_blank" class="whatsapp-modern">
+    <i class="fab fa-whatsapp"></i>
   </a>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Clouds Modern SPC. All rights reserved.</p>
-      <p>📞 +968 97666695 | 📧 mc4info@yahoo.com | 🏢 Sohar, North Al Batinah, Oman</p>
+  <footer class="modern-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3 class="accent-gold">CLOUDS MODERN SPC</h3>
+        <p>Setting the gold standard in specialized engineering across the Sultanate of Oman.</p>
+      </div>
+      <div class="footer-info">
+        <p>📞 +968 97666695</p>
+        <p>📧 mc4info@yahoo.com</p>
+        <p>🏢 Sohar, North Al Batinah, Oman</p>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      &copy; 2025 Clouds Modern SPC. All rights reserved.
     </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
-  </script>
+    AOS.init({ duration: 1000, once: true });
 
-  <!-- Scroll Highlight Script -->
-  <script>
-    const highlightBoxes = document.querySelectorAll('.highlight-box');
+    // Menu Mobile Logic
+    const toggle = document.getElementById('mobile-toggle');
+    const overlay = document.getElementById('mobile-overlay');
 
-    function setActiveBox() {
-      let activeIndex = 0;
-      highlightBoxes.forEach((box, i) => {
-        const rect = box.getBoundingClientRect();
-        if (rect.top < window.innerHeight / 2 && rect.bottom > 0) {
-          activeIndex = i;
-        }
-      });
-
-      highlightBoxes.forEach((box, i) => {
-        box.classList.toggle('active', i === activeIndex);
-      });
-    }
-
-    window.addEventListener('scroll', setActiveBox);
-    window.addEventListener('load', setActiveBox);
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('change');
+      overlay.classList.toggle('open');
+      document.body.classList.toggle('no-scroll');
+    });
   </script>
 </body>
 </html>

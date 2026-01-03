@@ -4,266 +4,150 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Us | Clouds Modern SPC</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    .contact-section {
-      background-color: #f3f3f3;
-      padding: 50px 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      margin-top: 40px;
-    }
-    .contact-details ul {
-      list-style: none;
-      padding-left: 0;
-      line-height: 2;
-    }
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .contact-form label {
-      font-weight: 500;
-    }
-    .contact-form input,
-    .contact-form textarea {
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-    .contact-form button {
-      background-color: #1e40af;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .contact-form button:hover {
-      background-color: #163090;
-    }
-
-    #formSuccessMessage {
-      color: green;
-      margin-top: 15px;
-      font-weight: bold;
-      display: none;
-    }
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      z-index: 999;
-    }
-
-    .menu-toggle div {
-      width: 25px;
-      height: 3px;
-      background-color: white;
-    }
-
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      padding: 10px;
-    }
-
-    .logo {
-      max-height: 60px;
-      width: auto;
-    }
-
-    .site-title {
-      flex: 1;
-      text-align: center;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: white;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-    }
-
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      nav ul.nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.9);
-        border-radius: 10px;
-        padding: 10px 0;
-        z-index: 998;
-        animation: fadeIn 0.3s ease-in-out;
-      }
-
-      nav ul.nav-links.active {
-        display: flex;
-      }
-
-      .nav-links li {
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-        border-bottom: 1px solid white;
-      }
-
-      .nav-links li:last-child {
-        border-bottom: none;
-      }
-
-      .nav-links li a {
-        color: white;
-        font-size: 18px;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="container header-container">
-      <img src="image/logo.png" alt="Clouds Modern SPC Logo" class="logo" />
-      <div class="site-title">CLOUDS MODERN SPC</div>
-      <div class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
-        <div></div>
-        <div></div>
-        <div></div>
+
+  <header class="main-header">
+    <div class="container header-flex">
+      <div class="logo-brand">
+        <img src="image/logo.png" alt="Logo" class="site-logo" />
+        <span class="brand-text">CLOUDS <span class="accent-gold">MODERN</span></span>
       </div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="quality.html">Quality & Safety</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
+
+       <nav class="desktop-nav">
+  <ul class="nav-links-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="quality.html">Quality & Safety</a></li>
+    <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+      <div class="menu-toggle" id="mobile-toggle">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
     </div>
   </header>
 
-  <main class="container">
-    <section class="section contact-section" data-aos="fade-up">
-      <h1>Contact Us</h1>
-      <p>We look forward to working with you. Reach out to us through the following channels or use the form below to send us a message.</p>
-    </section>
+  <div class="mobile-overlay" id="mobile-overlay">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="quality.html">Quality & Safety</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+</div>
 
-    <section class="section contact-details contact-section" data-aos="fade-up">
-      <ul>
-        <li><strong>Phone:</strong> +968 97666695</li>
-        <li><strong>Email:</strong> mc4info@yahoo.com</li>
-        <li><strong>Address:</strong> Sohar, North Al Batinah, Oman</li>
-        <li><strong>Website:</strong> <a href="https://www.clouds-modern.org" target="_blank">clouds-modern.org</a></li>
-      </ul>
-    </section>
+  <section class="hero-section" style="height: 40vh; min-height: 300px;">
+    <div class="hero-glow"></div>
+    <div class="container hero-content">
+      <h1 data-aos="fade-up">Let's Build <br><span class="text-gradient">Together</span></h1>
+      <p data-aos="fade-up" data-aos-delay="200">Have a project in mind? Reach out to our team of engineering experts in Oman.</p>
+    </div>
+  </section>
 
-    <section class="section contact-section" data-aos="fade-up">
-      <h2>Send Us a Message</h2>
-      <form id="contactForm" action="https://formspree.io/f/xblynjlr" method="POST" class="contact-form">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+  <main class="container" style="padding-bottom: 80px;">
+    <div class="grid-layout">
+      
+      <div class="feature-card" data-aos="fade-right">
+        <i class="fas fa-headset"></i>
+        <h3>Contact Details</h3>
+        <ul class="contact-info-list">
+          <li><i class="fas fa-phone gold"></i> +968 97666695</li>
+          <li><i class="fas fa-envelope gold"></i> mc4info@yahoo.com</li>
+          <li><i class="fas fa-location-dot gold"></i> Sohar, North Al Batinah, Oman</li>
+          <li><i class="fas fa-globe gold"></i> clouds-modern.org</li>
+        </ul>
+      </div>
 
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      <div class="feature-card" style="grid-column: span 2;" data-aos="fade-left">
+        <i class="fas fa-paper-plane"></i>
+        <h3>Send us a Message</h3>
+        <form id="contactForm" action="https://formspree.io/f/xblynjlr" method="POST" class="modern-form">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Full Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email Address" required>
+          </div>
+          <div class="form-group">
+            <textarea name="message" rows="5" placeholder="How can we help with your project?" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; border:none; cursor:pointer;">Send Message</button>
+        </form>
+        <p id="formSuccessMessage" style="display:none; color: #25D366; margin-top:15px; font-weight:bold;">
+          <i class="fas fa-check-circle"></i> Your message has been sent successfully!
+        </p>
+      </div>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
-
-        <button type="submit" class="btn">Send Message</button>
-      </form>
-      <p id="formSuccessMessage">Your message was sent. We will contact you soon.</p>
-    </section>
+    </div>
   </main>
 
-  <a href="https://wa.me/96897666695" target="_blank" class="whatsapp-float">
-    <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+  <a href="https://wa.me/96897666695" target="_blank" class="whatsapp-modern">
+    <i class="fab fa-whatsapp"></i>
   </a>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Clouds Modern SPC. All rights reserved.</p>
-      <p>📞 +968 97666695 | 📧 mc4info@yahoo.com | 🏢 Sohar, North Al Batinah, Oman</p>
+  <footer class="modern-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3 class="accent-gold">CLOUDS MODERN SPC</h3>
+        <p>Specialized Engineering & Infrastructure Solutions.</p>
+      </div>
+      <div class="footer-copyright">
+        &copy; 2026 Clouds Modern SPC. All rights reserved.
+      </div>
     </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
-  </script>
+    AOS.init({ duration: 1000, once: true });
 
-  <script>
+    // Menu Mobile Logic
+    const toggle = document.getElementById('mobile-toggle');
+    const overlay = document.getElementById('mobile-overlay');
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('change');
+      overlay.classList.toggle('open');
+      document.body.classList.toggle('no-scroll');
+    });
+
+    // Form Logic
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('formSuccessMessage');
 
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       const formData = new FormData(form);
-
       try {
         const response = await fetch(form.action, {
           method: form.method,
           body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
+          headers: { 'Accept': 'application/json' }
         });
-
         if (response.ok) {
           form.reset();
           successMessage.style.display = 'block';
         } else {
-          alert("There was a problem submitting your message. Please try again.");
+          alert("Problem with submission. Please try again.");
         }
       } catch (error) {
-        alert("Connection error. Please try again later.");
+        alert("Connection error.");
       }
     });
   </script>
