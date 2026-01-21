@@ -6,14 +6,451 @@
   <title>Quality & Safety | Clouds Modern SPC</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --neon-blue: #00d4ff;
+      --neon-blue-dark: #0099cc;
+      --dark-deep: #050814;
+      --gold: #ffd700;
+      --gradient: linear-gradient(135deg, #00d4ff, #0099cc);
+      --glass: rgba(5, 8, 20, 0.92);
+      --glass-border: rgba(0, 212, 255, 0.3);
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark-deep);
+      color: #fff;
+      overflow-x: hidden;
+      perspective: 2200px;
+    }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+
+    /* HEADER */
+    .main-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9999;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: 0 4px 30px rgba(0,212,255,0.15);
+      height: 80px;
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .logo-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .site-logo { height: 48px; }
+
+    .brand-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .accent-gold { color: var(--gold); }
+
+    .desktop-nav ul {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .desktop-nav a {
+      color: #e0f7ff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.05rem;
+      position: relative;
+      padding: 0.6rem 0;
+      transition: all 0.4s ease;
+      text-shadow: 0 0 6px rgba(0,212,255,0.3);
+    }
+
+    .desktop-nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: var(--neon-blue);
+      box-shadow: 0 0 12px var(--neon-blue);
+      transition: width 0.4s ease;
+    }
+
+    .desktop-nav a:hover::after,
+    .desktop-nav a.active::after {
+      width: 100%;
+    }
+
+    .desktop-nav a:hover,
+    .desktop-nav a.active {
+      color: var(--neon-blue);
+      text-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue);
+      transform: translateY(-2px);
+    }
+
+    .nav-cta {
+      background: var(--gradient);
+      color: #000 !important;
+      padding: 0.7rem 1.8rem;
+      border-radius: 50px;
+      font-weight: 600;
+      box-shadow: 0 0 20px rgba(0,212,255,0.5);
+      transition: all 0.4s;
+    }
+
+    .nav-cta:hover {
+      box-shadow: 0 0 40px rgba(0,212,255,0.8);
+      transform: translateY(-3px);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      z-index: 10000;
+    }
+
+    .menu-toggle div {
+      width: 32px;
+      height: 4px;
+      background: var(--neon-blue);
+      border-radius: 2px;
+      box-shadow: 0 0 10px var(--neon-blue);
+      transition: all 0.4s;
+    }
+
+    .menu-toggle.change .bar1 { transform: rotate(45deg) translate(6px, 6px); }
+    .menu-toggle.change .bar2 { opacity: 0; }
+    .menu-toggle.change .bar3 { transform: rotate(-45deg) translate(8px, -8px); }
+
+    .mobile-overlay {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 85%; max-width: 320px;
+      height: 100vh;
+      background: rgba(5,8,20,0.98);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+    }
+
+    .mobile-overlay.open { right: 0; }
+
+    .mobile-nav-links {
+      list-style: none;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    .mobile-nav-links li { margin: 2.5rem 0; }
+    .mobile-nav-links a {
+      color: #e0f7ff;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      text-shadow: 0 0 10px rgba(0,212,255,0.3);
+      transition: all 0.4s;
+      display: block;
+      padding: 0.8rem 0;
+    }
+
+    .mobile-nav-links a:hover {
+      color: var(--neon-blue);
+      text-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue);
+      transform: scale(1.1);
+    }
+
+    /* Hero */
+    .hero-section {
+      min-height: 45vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      text-align: center;
+      padding: 140px 0 60px;
+    }
+
+    main.container {
+      padding-top: 100px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 30%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60vw; height: 60vw;
+      background: radial-gradient(circle, rgba(0,212,255,0.12) 0%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    .hero-section h1 {
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .text-gradient {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Rectangles 3D interactifs - VERSION MAX PRO */
+    .rectangles-container {
+      perspective: 2800px;
+      height: 700px;
+      margin: 140px auto;
+      max-width: 1400px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .rectangle-wrapper {
+      width: 300px;
+      height: 380px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+      cursor: pointer;
+      transform: scale(0.85);
+      opacity: 0.7;
+      z-index: 1;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .rectangle-wrapper.active {
+      width: 460px;
+      height: 580px;
+      transform: translateZ(300px) rotateY(0deg) scale(1.15);
+      opacity: 1;
+      z-index: 10;
+      border: 4px solid var(--neon-blue);
+      box-shadow: 0 0 140px rgba(0,212,255,0.8), inset 0 0 80px rgba(0,212,255,0.4);
+      animation: rectGlow 2.5s infinite alternate;
+    }
+
+    @keyframes rectGlow {
+      0%   { box-shadow: 0 0 80px rgba(0,212,255,0.5); }
+      100% { box-shadow: 0 0 180px rgba(0,212,255,0.95); }
+    }
+
+    .rectangle-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 8, 20, 0.88);
+      border: 3px solid transparent;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 40px rgba(0,212,255,0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      transition: all 0.8s ease;
+    }
+
+    .rectangle-icon {
+      font-size: 4.5rem;
+      color: var(--neon-blue);
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 25px rgba(0,212,255,0.7));
+      animation: iconFloat 5s infinite ease-in-out;
+      opacity: 0;
+      transform: scale(0.7) translateY(40px);
+      transition: all 1.2s ease;
+    }
+
+    .rectangle-wrapper.active .rectangle-icon {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50%      { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .rectangle-face h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--neon-blue);
+      text-shadow: 0 0 15px var(--neon-blue);
+    }
+
+    .rectangle-face p, .rectangle-face ul {
+      font-size: 1rem;
+      color: #ddd;
+      line-height: 1.6;
+      max-width: 90%;
+    }
+
+    .rectangle-face ul {
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .rectangle-face li {
+      margin: 10px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .rectangle-face li::before {
+      content: "→";
+      color: var(--gold);
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+      text-shadow: 0 0 10px var(--gold);
+    }
+
+    /* Détail de la carte sélectionnée (en dessous) */
+    .face-detail {
+      margin-top: 80px;
+      padding: 60px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 30px;
+      border: 1px solid var(--glass-border);
+      text-align: center;
+      transition: all 0.6s ease;
+      opacity: 0;
+      transform: translateY(50px);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .face-detail.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .face-detail h3 {
+      font-size: 2.4rem;
+      color: var(--neon-blue);
+      margin-bottom: 25px;
+    }
+
+    /* WhatsApp */
+    .whatsapp-modern {
+      position: fixed !important;
+      bottom: 30px;
+      right: 30px;
+      width: 70px;
+      height: 70px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2.5rem;
+      box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+      z-index: 99999;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .whatsapp-modern:hover {
+      transform: scale(1.15) translateY(-5px);
+      box-shadow: 0 15px 35px rgba(37, 211, 102, 0.7);
+    }
+
+    /* Footer */
+    .modern-footer {
+      background: #000;
+      padding: 100px 0 50px;
+      border-top: 3px solid var(--neon-blue);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 4rem;
+    }
+
+    .footer-brand h3 { color: var(--gold); }
+    .footer-info i { color: var(--gold); }
+
+    .footer-copyright {
+      text-align: center;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(0,212,255,0.2);
+      color: #888;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .desktop-nav { display: none; }
+      .menu-toggle { display: flex; }
+      .rectangles-container { height: auto; flex-wrap: wrap; padding: 40px 0; }
+      .rectangle-wrapper { width: 280px; height: 380px; }
+      .rectangle-wrapper.active { width: 340px; height: 440px; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-section { height: 60vh; min-height: 450px; padding-top: 120px; }
+      .whatsapp-modern { width: 65px; height: 65px; font-size: 2.2rem; bottom: 20px; right: 20px; }
+      .rectangles-container { height: auto; padding: 60px 0; }
+      .rectangle-wrapper { width: 260px; height: 360px; }
+      .rectangle-wrapper.active { width: 320px; height: 420px; }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Header -->
   <header class="main-header">
     <div class="container header-flex">
       <div class="logo-brand">
@@ -24,11 +461,11 @@
       <nav class="desktop-nav">
         <ul class="nav-links-list">
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="team.html">Team</a></li>
-          <li><a href="quality.html">Quality & Safety</a></li>
+          <li><a href="quality.html" class="active">Quality & Safety</a></li>
           <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
         </ul>
       </nav>
@@ -41,6 +478,7 @@
     </div>
   </header>
 
+  <!-- Mobile Overlay -->
   <div class="mobile-overlay" id="mobile-overlay">
     <ul class="mobile-nav-links">
       <li><a href="index.html">Home</a></li>
@@ -51,9 +489,10 @@
       <li><a href="quality.html">Quality & Safety</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-</div>
+  </div>
 
-  <section class="hero-section" style="height: 45vh; min-height: 350px;">
+  <!-- Hero -->
+  <section class="hero-section">
     <div class="hero-glow"></div>
     <div class="container hero-content">
       <h1 data-aos="fade-up">Safety First, <br><span class="text-gradient">Quality Always</span></h1>
@@ -61,80 +500,92 @@
     </div>
   </section>
 
-  <main class="container" style="padding: 60px 0;">
-    <div class="grid-layout">
-      
-      <div class="feature-card hse-card" data-aos="fade-up">
-        <div class="hse-icon-wrapper">
-          <i class="fas fa-shield-halved"></i>
+  <!-- Rectangles 3D interactifs -->
+  <main class="container" style="padding: 80px 0;">
+
+    <!-- Conteneur des rectangles 3D -->
+    <div class="rectangles-container" data-aos="fade-up">
+      <!-- Rectangle 1 -->
+      <div class="rectangle-wrapper" id="rect1" data-index="0">
+        <div class="rectangle-face">
+          <i class="fas fa-shield-halved rectangle-icon"></i>
+          <h3>Quality Assurance</h3>
+          <p>Clouds Modern SPC is committed to the highest standards in workplace safety and quality assurance throughout all phases of our operations.</p>
         </div>
-        <h3>Quality Assurance</h3>
-        <p>Clouds Modern SPC is committed to the highest standards in workplace safety and quality assurance throughout all phases of our operations.</p>
       </div>
 
-      <div class="feature-card hse-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="hse-icon-wrapper">
-          <i class="fas fa-file-contract"></i>
+      <!-- Rectangle 2 -->
+      <div class="rectangle-wrapper" id="rect2" data-index="1">
+        <div class="rectangle-face">
+          <i class="fas fa-file-contract rectangle-icon"></i>
+          <h3>Compliance & Standards</h3>
+          <ul>
+            <li>EHS Management System Adherence</li>
+            <li>National & International Quality Benchmarks</li>
+            <li>Strict Enforcement of Safety Procedures</li>
+          </ul>
         </div>
-        <h3>Compliance & Standards</h3>
-        <ul class="service-list">
-          <li>EHS Management System Adherence</li>
-          <li>National & International Quality Benchmarks</li>
-          <li>Strict Enforcement of Safety Procedures</li>
-        </ul>
       </div>
 
-      <div class="feature-card hse-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="hse-icon-wrapper">
-          <i class="fas fa-triangle-exclamation"></i>
+      <!-- Rectangle 3 -->
+      <div class="rectangle-wrapper" id="rect3" data-index="2">
+        <div class="rectangle-face">
+          <i class="fas fa-triangle-exclamation rectangle-icon"></i>
+          <h3>Risk Control</h3>
+          <ul>
+            <li>Continuous Site Risk Monitoring</li>
+            <li>Incident & Accident Investigations</li>
+            <li>Implementation of CAPA Actions</li>
+          </ul>
         </div>
-        <h3>Risk Control</h3>
-        <ul class="service-list">
-          <li>Continuous Site Risk Monitoring</li>
-          <li>Incident & Accident Investigations</li>
-          <li>Implementation of CAPA Actions</li>
-        </ul>
       </div>
 
-      <div class="feature-card hse-card" data-aos="fade-up">
-        <div class="hse-icon-wrapper">
-          <i class="fas fa-user-graduate"></i>
+      <!-- Rectangle 4 -->
+      <div class="rectangle-wrapper" id="rect4" data-index="3">
+        <div class="rectangle-face">
+          <i class="fas fa-user-graduate rectangle-icon"></i>
+          <h3>Training & Awareness</h3>
+          <ul>
+            <li>Daily Safe Start Meetings</li>
+            <li>Regular Site Safety Presentations</li>
+            <li>Enhanced Safety Culture Education</li>
+          </ul>
         </div>
-        <h3>Training & Awareness</h3>
-        <ul class="service-list">
-          <li>Daily Safe Start Meetings</li>
-          <li>Regular Site Safety Presentations</li>
-          <li>Enhanced Safety Culture Education</li>
-        </ul>
       </div>
 
-      <div class="feature-card hse-card" data-aos="fade-up" data-aos-delay="100">
-        <div class="hse-icon-wrapper">
-          <i class="fas fa-hard-hat"></i>
+      <!-- Rectangle 5 -->
+      <div class="rectangle-wrapper" id="rect5" data-index="4">
+        <div class="rectangle-face">
+          <i class="fas fa-hard-hat rectangle-icon"></i>
+          <h3>Workplace Responsibility</h3>
+          <ul>
+            <li>Road Safety & Health Rules</li>
+            <li>Promoting Personal Responsibility</li>
+            <li>Secure & Productive Environments</li>
+          </ul>
         </div>
-        <h3>Workplace Responsibility</h3>
-        <ul class="service-list">
-          <li>Road Safety & Health Rules</li>
-          <li>Promoting Personal Responsibility</li>
-          <li>Secure & Productive Environments</li>
-        </ul>
       </div>
 
-      <div class="feature-card hse-card" data-aos="fade-up" data-aos-delay="200">
-        <div class="hse-icon-wrapper">
-          <i class="fas fa-chart-line"></i>
+      <!-- Rectangle 6 -->
+      <div class="rectangle-wrapper" id="rect6" data-index="5">
+        <div class="rectangle-face">
+          <i class="fas fa-chart-line rectangle-icon"></i>
+          <h3>HSE Performance</h3>
+          <p>We measure our success by the zero-accident goal, ensuring every team member returns home safely every day.</p>
         </div>
-        <h3>HSE Performance</h3>
-        <p>We measure our success by the zero-accident goal, ensuring every team member returns home safely every day.</p>
       </div>
-
     </div>
+
+    <!-- Détail de la carte sélectionnée -->
+    <div class="face-detail" id="faceDetail"></div>
   </main>
 
-  <a href="https://wa.me/97666695" target="_blank" class="whatsapp-modern">
+  <!-- WhatsApp -->
+  <a href="https://wa.me/96897666695" target="_blank" class="whatsapp-modern">
     <i class="fab fa-whatsapp"></i>
   </a>
 
+  <!-- Footer -->
   <footer class="modern-footer">
     <div class="container footer-grid">
       <div class="footer-brand">
@@ -151,18 +602,90 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1000, once: true });
-    
+    AOS.init({ duration: 1200, once: true });
+
+    // Menu mobile toggle
     const toggle = document.getElementById('mobile-toggle');
     const overlay = document.getElementById('mobile-overlay');
-    toggle.addEventListener('click', () => {
+    const navLinks = document.querySelectorAll('.mobile-nav-links a');
+
+    function toggleMenu() {
       toggle.classList.toggle('change');
       overlay.classList.toggle('open');
       document.body.classList.toggle('no-scroll');
+    }
+
+    toggle.onclick = toggleMenu;
+
+    navLinks.forEach(link => {
+      link.onclick = toggleMenu;
     });
+
+    window.onclick = function(event) {
+      if (event.target == overlay) {
+        toggleMenu();
+      }
+    }
+
+    // Rectangles 3D interactifs
+    const rectangles = document.querySelectorAll('.rectangle-wrapper');
+    const faceDetail = document.getElementById('faceDetail');
+
+    rectangles.forEach(rect => {
+      rect.addEventListener('click', () => {
+        // Réinitialiser tous les rectangles
+        rectangles.forEach(r => {
+          r.classList.remove('active');
+          r.style.transform = 'scale(0.85)';
+          r.style.opacity = '0.7';
+          r.style.zIndex = '1';
+        });
+
+        // Activer le rectangle cliqué
+        rect.classList.add('active');
+        rect.style.transform = 'translateZ(300px) scale(1.15)';
+        rect.style.opacity = '1';
+        rect.style.zIndex = '10';
+
+        // Afficher les détails en dessous
+        faceDetail.innerHTML = rect.querySelector('.rectangle-face').innerHTML;
+        faceDetail.classList.add('visible');
+      });
+
+      // Hover : léger agrandissement
+      rect.addEventListener('mouseenter', () => {
+        if (!rect.classList.contains('active')) {
+          rect.style.transform = 'scale(0.95)';
+          rect.style.opacity = '0.9';
+        }
+      });
+
+      rect.addEventListener('mouseleave', () => {
+        if (!rect.classList.contains('active')) {
+          rect.style.transform = 'scale(0.85)';
+          rect.style.opacity = '0.7';
+        }
+      });
+    });
+
+    // Observer pour activer l'animation au scroll
+    const rectanglesContainer = document.querySelector('.rectangles-container');
+    const rectObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          rectangles.forEach((r, i) => {
+            setTimeout(() => {
+              r.style.opacity = '0.7';
+              r.style.transform = 'scale(0.85)';
+            }, i * 150);
+          });
+        }
+      });
+    }, { threshold: 0.2 });
+
+    rectObserver.observe(rectanglesContainer);
   </script>
-  
 </body>
 </html>

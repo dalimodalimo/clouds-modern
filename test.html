@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+    <title>Puzzle 3D Scroll - Responsive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background: #0f0f1a;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            perspective: 1200px; /* Espace 3D plus profond */
+        }
+
+        #puzzle-container {
+            position: relative;
+            height: 500vh; /* 5 sections × 100vh */
+            min-height: 100vh;
+        }
+
+        .puzzle-piece {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform; /* Meilleures performances */
+        }
+
+        /* Effet puzzle + ombre réaliste */
+        .puzzle-piece {
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 60px rgba(0,0,0,0.6),
+                inset 0 0 40px rgba(255,255,255,0.08),
+                inset 0 0 80px rgba(0,0,0,0.4);
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Formes de puzzle différentes pour chaque pièce */
+        .puzzle-piece:nth-child(1) { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+        .puzzle-piece:nth-child(2) { background: linear-gradient(135deg, #0984e3, #00b894); }
+        .puzzle-piece:nth-child(3) { background: linear-gradient(135deg, #6c5ce7, #a29bfe); }
+        .puzzle-piece:nth-child(4) { background: linear-gradient(135deg, #fdcb6e, #e17055); }
+        .puzzle-piece:nth-child(5) { background: linear-gradient(135deg, #00cec9, #55efc4); }
+
+        /* Formes puzzle (clip-path) */
+        .puzzle-piece:nth-child(odd) {
+            clip-path: polygon(
+                0% 15%, 15% 0%, 85% 0%, 100% 15%,
+                100% 85%, 85% 100%, 15% 100%, 0% 85%
+            );
+        }
+
+        .puzzle-piece:nth-child(even) {
+            clip-path: polygon(
+                15% 0%, 85% 0%, 100% 15%, 100% 85%,
+                85% 100%, 15% 100%, 0% 85%, 0% 15%
+            );
+        }
+
+        /* Contenu interne */
+        .content {
+            text-align: center;
+            padding: 5%;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        h2 {
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.7);
+        }
+
+        p {
+            font-size: clamp(1.1rem, 3vw, 1.6rem);
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        img {
+            max-width: 85%;
+            max-height: 70vh;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        /* Animation 3D au scroll */
+        .puzzle-piece.active {
+            transform: translateZ(-180px) rotateY(160deg) translateY(80vh) scale(0.92);
+            box-shadow: 
+                0 40px 100px rgba(0,0,0,0.7),
+                inset 0 0 60px rgba(255,255,255,0.1);
+        }
+
+        /* Pour les écrans plus petits */
+        @media (max-width: 768px) {
+            .content {
+                padding: 8%;
+            }
+            h2 {
+                font-size: clamp(2rem, 8vw, 3.5rem);
+            }
+            p {
+                font-size: clamp(1rem, 4vw, 1.3rem);
+            }
+            img {
+                max-width: 95%;
+                max-height: 55vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .puzzle-piece {
+                clip-path: none; /* Simplification sur très petits écrans */
+                border-radius: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="puzzle-container">
+        <div class="puzzle-piece" id="piece1">
+            <div class="content">
+                <h2>Section 1</h2>
+                <p>Bienvenue dans cette expérience interactive ! Faites défiler pour voir les pièces du puzzle se détacher et tourner en 3D.</p>
+            </div>
+        </div>
+
+        <div class="puzzle-piece" id="piece2">
+            <div class="content">
+                <img src="https://images.unsplash.com/photo-1557683316-973673baf926?w=800" alt="Image 1">
+            </div>
+        </div>
+
+        <div class="puzzle-piece" id="piece3">
+            <div class="content">
+                <h2>Section 3</h2>
+                <p>Chaque pièce révèle une nouvelle partie de l'histoire avec une belle animation 3D.</p>
+            </div>
+        </div>
+
+        <div class="puzzle-piece" id="piece4">
+            <div class="content">
+                <img src="https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?w=800" alt="Image 2">
+            </div>
+        </div>
+
+        <div class="puzzle-piece" id="piece5">
+            <div class="content">
+                <h2>Fin du puzzle</h2>
+                <p>Merci d'avoir exploré cette animation !</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const pieces = document.querySelectorAll('.puzzle-piece');
+        const sectionHeight = window.innerHeight;
+
+        function updatePieces() {
+            const scrollPos = window.scrollY;
+
+            pieces.forEach((piece, index) => {
+                const triggerStart = index * sectionHeight;
+                const triggerEnd = (index + 1) * sectionHeight;
+
+                if (scrollPos >= triggerStart && scrollPos < triggerEnd) {
+                    const progress = (scrollPos - triggerStart) / sectionHeight;
+
+                    // Animation plus douce et réaliste
+                    const rotateY   = progress * 160;      // 0 → 160°
+                    const translateZ = -progress * 180;    // -180px en arrière
+                    const translateY = progress * 80;      // Déplacement vertical
+                    const scale      = 1 - (progress * 0.08);
+
+                    piece.style.transform = `
+                        translateZ(${translateZ}px) 
+                        rotateY(${rotateY}deg) 
+                        translateY(${translateY}vh)
+                        scale(${scale})
+                    `;
+                    piece.classList.add('active');
+                } 
+                else if (scrollPos >= triggerEnd) {
+                    // Position finale quand la section est dépassée
+                    piece.style.transform = `
+                        translateZ(-180px) 
+                        rotateY(160deg) 
+                        translateY(80vh)
+                        scale(0.92)
+                    `;
+                    piece.classList.add('active');
+                } 
+                else {
+                    // Position initiale
+                    piece.style.transform = 'translateZ(0) rotateY(0deg) translateY(0) scale(1)';
+                    piece.classList.remove('active');
+                }
+            });
+        }
+
+        // Mise à jour au scroll + au redimensionnement
+        window.addEventListener('scroll', updatePieces);
+        window.addEventListener('resize', updatePieces);
+        
+        // Première mise à jour
+        updatePieces();
+    </script>
+</body>
+</html>
