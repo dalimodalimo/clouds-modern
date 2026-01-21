@@ -8,661 +8,321 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
   <style>
+    /* --- VARIABLES & BASE (Synchronisées avec l'accueil) --- */
     :root {
+      --logo-blue: #0099cc; 
       --neon-blue: #00d4ff;
-      --neon-blue-dark: #0099cc;
-      --dark: #0a0a1a;
       --dark-deep: #050814;
       --gold: #ffd700;
+      --header-white: rgba(255, 255, 255, 0.98);
       --gradient: linear-gradient(135deg, #00d4ff, #0099cc);
+      --glass-border: rgba(0, 153, 204, 0.2);
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; outline: none; }
+    html { scroll-behavior: smooth; }
+    
     body {
       font-family: 'Inter', sans-serif;
       background: var(--dark-deep);
       color: #fff;
       overflow-x: hidden;
-      perspective: 2200px;
+      line-height: 1.6;
     }
+
+    body.menu-open { overflow: hidden; }
 
     .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
 
-    /* HEADER - exactement comme ton ancien code */
+    /* --- EFFET FLOU CONTENU --- */
+    #page-wrapper {
+      transition: filter 0.6s ease, transform 0.6s ease;
+    }
+    body.menu-open #page-wrapper {
+      filter: blur(8px);
+      transform: scale(0.98);
+    }
+
+    /* --- HEADER BLANC & BLEU --- */
     .main-header {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 9999;
-      background: rgba(5,8,20,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,212,255,0.3);
-      box-shadow: 0 4px 30px rgba(0,212,255,0.15);
-      height: 80px; /* Hauteur fixe */
-    }
-
-    .header-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100%;
-    }
-
-    .logo-brand {
+      top: 25px; left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 85px;
+      z-index: 10000;
+      background: var(--header-white);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: 25px;
+      transition: var(--transition);
       display: flex;
       align-items: center;
-      gap: 1rem;
     }
 
-    .site-logo { height: 48px; }
-
-    .brand-text {
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 1px;
+    .main-header.scrolled {
+      top: 0; width: 100%; height: 70px; border-radius: 0;
+      background: #ffffff; border-bottom: 3px solid var(--logo-blue);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
-    .accent-gold { color: var(--gold); }
+    .header-flex { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .logo-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .site-logo { height: 45px; transition: var(--transition); }
+    .scrolled .site-logo { height: 35px; }
+    .brand-text { font-size: 1.4rem; font-weight: 800; letter-spacing: 1px; color: var(--logo-blue); }
+    .accent-gold { color: #d4af37; }
 
-    /* Menu Desktop */
-    .desktop-nav ul {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-
+    /* MENU DESKTOP */
+    .desktop-nav ul { display: flex; gap: 2rem; list-style: none; align-items: center; }
     .desktop-nav a {
-      color: #e0f7ff;
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1.05rem;
-      position: relative;
-      padding: 0.6rem 0;
-      transition: all 0.4s ease;
+      color: var(--logo-blue); text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      position: relative; padding: 5px 0; transition: 0.3s;
     }
-
     .desktop-nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background: var(--neon-blue);
-      box-shadow: 0 0 12px var(--neon-blue);
-      transition: width 0.4s ease;
+      content: ''; position: absolute; width: 0; height: 2px;
+      bottom: 0; left: 0; background: var(--logo-blue); transition: 0.3s;
     }
-
-    .desktop-nav a:hover::after,
-    .desktop-nav a.active::after {
-      width: 100%;
-    }
-
-    .desktop-nav a:hover,
-    .desktop-nav a.active {
-      color: var(--neon-blue);
-      text-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue);
-      transform: translateY(-2px);
-    }
+    .desktop-nav a:hover::after, .desktop-nav a.active::after { width: 100%; }
+    .desktop-nav a:hover { color: var(--neon-blue); }
 
     .nav-cta {
-      background: var(--gradient);
-      color: #000 !important;
-      padding: 0.7rem 1.8rem;
-      border-radius: 50px;
-      font-weight: 600;
-      box-shadow: 0 0 20px rgba(0,212,255,0.5);
-      transition: all 0.4s;
+      background: var(--logo-blue); color: #fff !important;
+      padding: 10px 24px !important; border-radius: 50px; font-weight: 700 !important;
+      box-shadow: 0 4px 15px rgba(0,153,204,0.3);
     }
 
-    .nav-cta:hover {
-      box-shadow: 0 0 40px rgba(0,212,255,0.8);
-      transform: translateY(-3px);
-    }
-
-    /* Hamburger Toggle */
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 6px;
-      cursor: pointer;
-      z-index: 10000;
-    }
-
-    .menu-toggle div {
-      width: 32px;
-      height: 4px;
-      background: var(--neon-blue);
-      border-radius: 2px;
-      box-shadow: 0 0 10px var(--neon-blue);
-      transition: all 0.4s;
-    }
-
-    .menu-toggle.change .bar1 { transform: rotate(45deg) translate(6px, 6px); }
+    /* --- MOBILE MENU SIDE SLIDE (70%) --- */
+    .menu-toggle { display: none; flex-direction: column; gap: 6px; cursor: pointer; z-index: 10001; }
+    .menu-toggle div { width: 30px; height: 3px; background: var(--logo-blue); border-radius: 3px; transition: 0.4s; }
+    .menu-toggle.change .bar1 { transform: translateY(9px) rotate(45deg); }
     .menu-toggle.change .bar2 { opacity: 0; }
-    .menu-toggle.change .bar3 { transform: rotate(-45deg) translate(8px, -8px); }
+    .menu-toggle.change .bar3 { transform: translateY(-9px) rotate(-45deg); }
 
-    /* Mobile Overlay - Sliding depuis la droite + liens visibles en un seul écran */
     .mobile-overlay {
-      position: fixed;
-      top: 0; right: -100%;
-      width: 85%; max-width: 320px;
-      height: 100vh;
-      background: rgba(5,8,20,0.98);
-      backdrop-filter: blur(10px);
-      z-index: 9999;
-      transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
-      box-shadow: -10px 0 40px rgba(0,0,0,0.8);
+      position: fixed; top: 0; right: -70%; width: 70%; height: 100vh;
+      background: #ffffff; box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+      z-index: 9999; transition: 0.5s cubic-bezier(0.85, 0, 0.15, 1);
+      display: flex; justify-content: center; align-items: center;
     }
+    .mobile-overlay.open { right: 0; }
+    .mobile-nav-links { list-style: none; text-align: left; width: 80%; }
+    .mobile-nav-links li { margin: 1.5rem 0; opacity: 0; transform: translateX(30px); }
+    .mobile-overlay.open li { opacity: 1; transform: translateX(0); transition: 0.5s; }
+    .mobile-nav-links a { color: var(--logo-blue); font-size: 1.5rem; font-weight: 700; text-decoration: none; }
 
-    .mobile-overlay.open {
-      right: 0;
-    }
+    /* --- HERO --- */
+    .hero-section { padding: 180px 0 60px; text-align: center; position: relative; }
+    .text-gradient { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-    .mobile-nav-links {
-      list-style: none;
-      text-align: center;
-      padding: 0;
-      margin: 0;
-    }
-
-    .mobile-nav-links li {
-      margin: 2.5rem 0; /* Espacement généreux pour que tout rentre */
-    }
-
-    .mobile-nav-links a {
-      color: #e0f7ff;
-      font-size: 1.8rem; /* Taille adaptée pour mobile */
-      font-weight: 600;
-      text-decoration: none;
-      text-shadow: 0 0 10px rgba(0,212,255,0.3);
-      transition: all 0.4s;
-      display: block;
-      padding: 0.8rem 0;
-    }
-
-    .mobile-nav-links a:hover {
-      color: var(--neon-blue);
-      text-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue);
-      transform: scale(1.1);
-    }
-
-    /* Padding pour éviter que le texte soit caché sous le header fixe */
-    .hero-section {
-      height: 50vh;
-      min-height: 400px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 120px; /* Hauteur du header + marge */
-    }
-
-    main {
-      padding-top: 120px; /* Même padding que le header */
-    }
-
-    .hero-glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 20%, rgba(0,212,255,0.18), transparent 70%);
-    }
-
-    /* Icônes néon flottantes */
-    .neon-background-icons {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .neon-icon {
-      position: absolute;
-      font-size: clamp(3rem, 6vw, 6.5rem);
-      color: transparent;
-      -webkit-text-stroke: 1.5px var(--neon-blue);
-      text-shadow: 
-        0 0 10px var(--neon-blue),
-        0 0 20px var(--neon-blue),
-        0 0 40px var(--neon-blue-dark),
-        0 0 80px var(--neon-blue-dark);
-      opacity: 0.4;
-      animation: neonPulse 6s infinite alternate, floatNeon 28s infinite linear;
-      pointer-events: none;
-    }
-
-    @keyframes neonPulse {
-      0%   { opacity: 0.35; text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue-dark); }
-      100% { opacity: 0.65; text-shadow: 0 0 20px var(--neon-blue), 0 0 40px var(--neon-blue), 0 0 80px var(--neon-blue-dark), 0 0 120px var(--neon-blue-dark); }
-    }
-
-    @keyframes floatNeon {
-      0%   { transform: translate(0, 0) rotate(0deg); }
-      25%  { transform: translate(120px, -150px) rotate(15deg); }
-      50%  { transform: translate(-100px, 180px) rotate(-20deg); }
-      75%  { transform: translate(150px, -120px) rotate(25deg); }
-      100% { transform: translate(0, 0) rotate(0deg); }
-    }
-
-    .neon-icon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-    .neon-icon:nth-child(2) { top: 25%; right: 8%; animation-delay: 3s; }
-    .neon-icon:nth-child(3) { bottom: 15%; left: 12%; animation-delay: 6s; }
-    .neon-icon:nth-child(4) { bottom: 30%; right: 10%; animation-delay: 9s; }
-    .neon-icon:nth-child(5) { top: 40%; left: 20%; animation-delay: 12s; }
-    .neon-icon:nth-child(6) { top: 60%; right: 15%; animation-delay: 15s; }
-    .neon-icon:nth-child(7) { bottom: 45%; left: 25%; animation-delay: 18s; }
-    .neon-icon:nth-child(8) { top: 70%; right: 18%; animation-delay: 21s; }
-
-    /* Services */
-    main { padding: 140px 0 120px; }
-
-    .grid-layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 3rem;
-    }
-
+    /* --- SERVICES GRID --- */
+    .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; padding: 40px 0; }
+    
     .service-panel {
-      background: rgba(10, 20, 30, 0.75);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(0,212,255,0.35);
-      border-radius: 32px;
-      padding: 3rem 2.8rem;
-      transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      box-shadow: 0 0 40px rgba(0,212,255,0.2);
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 25px; padding: 40px; transition: 0.5s; position: relative; overflow: hidden;
     }
-
     .service-panel:hover {
-      transform: translateY(-35px) rotateX(12deg) rotateY(10deg) scale(1.06);
-      box-shadow: 0 0 80px rgba(0,212,255,0.5), 0 0 120px rgba(0,212,255,0.3);
-      border-color: var(--neon-blue);
+      transform: translateY(-10px); border-color: var(--logo-blue);
+      background: rgba(255,255,255,0.04); box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
+    .service-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; }
+    .service-header i { font-size: 2.8rem; color: var(--logo-blue); }
+    .service-number { font-size: 3.5rem; font-weight: 900; opacity: 0.05; color: #fff; }
+    .service-panel h3 { font-size: 1.8rem; margin-bottom: 15px; color: #fff; }
+    .service-list { list-style: none; }
+    .service-list li { margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; color: #ccc; }
+    .service-list li i { color: var(--gold); margin-top: 5px; font-size: 0.9rem; }
 
-    .service-header {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .service-header i {
-      font-size: 4rem;
-      color: var(--neon-blue);
-      filter: drop-shadow(0 0 18px var(--neon-blue));
-    }
-
-    .service-number {
-      font-size: 5.5rem;
-      font-weight: 900;
-      color: transparent;
-      -webkit-text-stroke: 1.2px var(--neon-blue-dark);
-      opacity: 0.25;
-    }
-
-    h3 { 
-      font-size: 2.1rem; 
-      margin-bottom: 1.2rem; 
-      color: var(--neon-blue);
-      text-shadow: 0 0 15px rgba(0,212,255,0.7);
-    }
-
-    p { font-size: 1.15rem; line-height: 1.7; color: #ddd; margin-bottom: 1.8rem; }
-
-    .service-check-list li {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 1rem 0;
-      font-size: 1.15rem;
-      color: #eee;
-    }
-
-    .service-check-list i { color: var(--neon-blue); }
-
-    /* Animations inattendues au scroll */
-    .service-panel.pivot       { transform: rotateY(180deg) translateZ(-250px); opacity: 0; }
-    .service-panel.evaporate   { transform: scale(0.4) translateY(250px); opacity: 0; filter: blur(25px); }
-    .service-panel.twist       { transform: rotateX(90deg) skewY(25deg); opacity: 0; }
-    .service-panel.explode     { transform: scale(0) rotate(450deg); opacity: 0; }
-    .service-panel.glide       { transform: translateX(-120vw) rotateZ(50deg); opacity: 0; }
-    .service-panel.dissolve    { opacity: 0; filter: brightness(0) saturate(0); transform: translateZ(-400px); }
-
-    .service-panel.visible {
-      transform: none !important;
-      opacity: 1;
-      filter: none;
-    }
-
-    /* CTA */
-    .cta-section {
-      background: linear-gradient(135deg, #001f3f, #003366);
-      padding: 100px 0;
-      text-align: center;
-      border-top: 3px solid var(--neon-blue);
-      border-bottom: 3px solid var(--neon-blue);
-    }
-
-    .cta-section h2 { font-size: 2.8rem; margin-bottom: 1.5rem; text-shadow: 0 0 20px var(--neon-blue); }
-
-    .btn-primary {
-      background: var(--gradient);
-      color: #000;
-      padding: 1.2rem 3rem;
-      border-radius: 50px;
-      font-size: 1.3rem;
-      font-weight: 600;
-      box-shadow: 0 0 40px rgba(0,212,255,0.6);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 0 80px rgba(0,212,255,0.9);
-      transform: translateY(-8px);
-    }
-
-    /* WhatsApp */
+    /* --- FOOTER --- */
+    .modern-footer { padding: 80px 0 40px; background: #02040a; border-top: 2px solid var(--logo-blue); margin-top: 80px; }
+    
+    /* --- WHATSAPP --- */
     .whatsapp-modern {
-      position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 75px;
-      height: 75px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.8rem;
-      color: white;
-      box-shadow: 0 0 50px rgba(37,213,102,0.7);
-      z-index: 9999;
-      transition: all 0.4s;
+      position: fixed; bottom: 35px; right: 35px; width: 70px; height: 70px;
+      background: #25D366; border-radius: 50%; display: flex; justify-content: center;
+      align-items: center; color: #fff; font-size: 2.5rem; z-index: 10002;
     }
 
-    .whatsapp-modern:hover {
-      transform: scale(1.15) translateY(-12px);
-      box-shadow: 0 0 100px rgba(37,213,102,1);
-    }
-
-    /* Footer */
-    .modern-footer {
-      background: #000;
-      padding: 100px 0 50px;
-      border-top: 3px solid var(--neon-blue);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 4rem;
-    }
-
-    .footer-brand h3 { color: var(--gold); }
-    .footer-info i { color: var(--gold); }
-
-    .footer-copyright {
-      text-align: center;
-      margin-top: 5rem;
-      padding-top: 3rem;
-      border-top: 1px solid rgba(0,212,255,0.2);
-      color: #888;
-    }
-
-    /* Responsive */
-    @media (max-width: 992px) {
+    @media (max-width: 1024px) {
       .desktop-nav { display: none; }
       .menu-toggle { display: flex; }
+      .main-header { top: 15px; width: 92%; }
       .grid-layout { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 768px) {
-      .hero-section { height: 60vh; min-height: 450px; }
-      .service-panel { padding: 2.5rem; }
-      .mobile-nav-links a { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Icônes néon flottantes -->
-  <div class="neon-background-icons">
-    <i class="fas fa-hard-hat neon-icon"></i>
-    <i class="fas fa-hammer neon-icon"></i>
-    <i class="fas fa-tools neon-icon"></i>
-    <i class="fas fa-screwdriver-wrench neon-icon"></i>
-    <i class="fas fa-trowel-bricks neon-icon"></i>
-    <i class="fas fa-paint-roller neon-icon"></i>
-    <i class="fas fa-flask-vial neon-icon"></i>
-    <i class="fas fa-compass-drafting neon-icon"></i>
+  <div class="mobile-overlay" id="mobile-overlay">
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="team.html">Our Team</a></li>
+      <li><a href="quality.html">Quality & Safety</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
   </div>
 
-  <!-- Header (exactement comme ton code original) -->
-  <header class="main-header">
+  <header class="main-header" id="morph-header">
     <div class="container header-flex">
-      <div class="logo-brand">
-        <img src="image/logowhite .png" alt="Logo" class="site-logo" />
+      <a href="index.html" class="logo-brand">
+        <img src="image/logo.png" alt="Logo" class="site-logo" />
         <span class="brand-text">MODERN <span class="accent-gold">CLOUDS</span></span>
-      </div>
+      </a>
 
       <nav class="desktop-nav">
-        <ul class="nav-links-list">
+        <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="services.html">Services</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html" class="active">Services</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="team.html">Team</a></li>
-          <li><a href="quality.html">Quality & Safety</a></li>
+          <li><a href="quality.html">Quality</a></li>
           <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
         </ul>
       </nav>
 
       <div class="menu-toggle" id="mobile-toggle">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
+        <div class="bar1"></div><div class="bar2"></div><div class="bar3"></div>
       </div>
     </div>
   </header>
 
-  <!-- Mobile Overlay - Sliding depuis la droite + liens visibles en un seul écran -->
-  <div class="mobile-overlay" id="mobile-overlay">
-    <ul class="mobile-nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="team.html">Team</a></li>
-      <li><a href="quality.html">Quality & Safety</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <div id="page-wrapper">
+    <section class="hero-section">
+      <div class="container">
+        <h1 data-aos="zoom-out">Precision <br><span class="text-gradient">Engineering Services</span></h1>
+        <p style="max-width: 800px; margin: 20px auto; color: #aaa; font-size: 1.1rem;">Providing Oman with specialized infrastructure rehabilitation, advanced industrial coatings, and technical maintenance solutions.</p>
+      </div>
+    </section>
+
+    <main class="container">
+      <div class="grid-layout">
+        <div class="service-panel" data-aos="fade-up">
+          <div class="service-header"><i class="fas fa-trowel-bricks"></i><span class="service-number">01</span></div>
+          <h3>Civil & Structural</h3>
+          <p>Comprehensive rehabilitation and core engineering works for industrial and commercial structures.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Infrastructure Reinforcement & Repair</li>
+            <li><i class="fas fa-check-circle"></i> Precision Steel Fabrication & Welding</li>
+            <li><i class="fas fa-check-circle"></i> Settlement & Foundation Stabilization</li>
+          </ul>
+        </div>
+
+        <div class="service-panel" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-header"><i class="fas fa-layer-group"></i><span class="service-number">02</span></div>
+          <h3>Protective Coatings</h3>
+          <p>Shielding your investments with advanced chemical and environmental barriers.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Industrial Epoxy & PU Flooring</li>
+            <li><i class="fas fa-check-circle"></i> Intumescent Fire-Rated Coatings</li>
+            <li><i class="fas fa-check-circle"></i> Anti-Corrosion Systems for Steel</li>
+          </ul>
+        </div>
+
+        <div class="service-panel" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-header"><i class="fas fa-flask-vial"></i><span class="service-number">03</span></div>
+          <h3>Chemical Treatments</h3>
+          <p>Scientific methods to restore structural integrity and extend service life.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Concrete Pressure Injection & Grouting</li>
+            <li><i class="fas fa-check-circle"></i> Specialized Crack Remediation</li>
+            <li><i class="fas fa-check-circle"></i> Surface Hardening & Dust-Proofing</li>
+          </ul>
+        </div>
+
+        <div class="service-panel" data-aos="fade-up">
+          <div class="service-header"><i class="fas fa-compass-drafting"></i><span class="service-number">04</span></div>
+          <h3>Technical Finishing</h3>
+          <p>High-end technical finishes where durability meets precise craftsmanship.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Specialized Aluminum & Glazing</li>
+            <li><i class="fas fa-check-circle"></i> Floor Polishing & Mirror Finishing</li>
+            <li><i class="fas fa-check-circle"></i> External Pavement Protection</li>
+          </ul>
+        </div>
+
+        <div class="service-panel" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-header"><i class="fas fa-bolt"></i><span class="service-number">05</span></div>
+          <h3>Utilities & MEP</h3>
+          <p>Essential mechanical, electrical, and plumbing support for complex facilities.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Industrial Electrical Infrastructure</li>
+            <li><i class="fas fa-check-circle"></i> Advanced HVAC Support & Maintenance</li>
+            <li><i class="fas fa-check-circle"></i> Plumbing & Sanitary Engineering</li>
+          </ul>
+        </div>
+
+        <div class="service-panel" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-header"><i class="fas fa-users-gear"></i><span class="service-number">06</span></div>
+          <h3>Project Support</h3>
+          <p>Expertise and technical manpower to ensure project delivery excellence.</p>
+          <ul class="service-list">
+            <li><i class="fas fa-check-circle"></i> Specialized Engineering Manpower</li>
+            <li><i class="fas fa-check-circle"></i> Annual Maintenance Contracts (AMC)</li>
+            <li><i class="fas fa-check-circle"></i> Technical Site & Asset Inspections</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <footer class="modern-footer">
+      <div class="container">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+          <div>
+            <h3 class="accent-gold">CLOUDS MODERN SPC</h3>
+            <p style="color: #666; margin-top: 10px;">Excellence in specialized engineering across Oman.</p>
+          </div>
+          <div style="color: #888;">
+            <p><i class="fas fa-phone"></i> +968 97666695</p>
+            <p><i class="fas fa-location-dot"></i> Sohar, North Al Batinah, Oman</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px; color: #444; font-size: 0.9rem;">
+          &copy; 2026 Clouds Modern SPC. All Rights Reserved.
+        </div>
+      </div>
+    </footer>
   </div>
 
-  <!-- Hero -->
-  <section class="hero-section">
-    <div class="hero-glow"></div>
-    <div class="container hero-content">
-      <h1 data-aos="fade-up">Precision <br><span style="background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Engineering Services</span></h1>
-      <p data-aos="fade-up" data-aos-delay="200">Delivering high-performance structural solutions and specialized chemical treatments across Oman.</p>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <main class="container">
-    <div class="grid-layout">
-
-      <div class="service-panel pivot" data-aos="fade-up">
-        <div class="service-header">
-          <i class="fas fa-trowel-bricks"></i>
-          <span class="service-number">01</span>
-        </div>
-        <h3>Structural & Civil Works</h3>
-        <p>Advanced rehabilitation and core construction services.</p>
-        <ul class="service-check-list">
-          <li><i class="fas fa-check"></i> Infrastructure Reinforcement</li>
-          <li><i class="fas fa-check"></i> Welding & Precision Fabrication</li>
-          <li><i class="fas fa-check"></i> Settlement Solutions</li>
-          <li><i class="fas fa-check"></i> Controlled Demolition</li>
-        </ul>
-      </div>
-
-      <div class="service-panel evaporate" data-aos="fade-up" data-aos-delay="100">
-        <div class="service-header">
-          <i class="fas fa-layer-group"></i>
-          <span class="service-number">02</span>
-        </div>
-        <h3>Protective Coatings</h3>
-        <p>Shielding assets against harsh industrial environments.</p>
-        <ul class="service-check-list">
-          <li><i class="fas fa-check"></i> Industrial Epoxy Flooring</li>
-          <li><i class="fas fa-check"></i> Fire-Rated Coating Systems</li>
-          <li><i class="fas fa-check"></i> Advanced Waterproofing</li>
-          <li><i class="fas fa-check"></i> Anti-Corrosion Treatment</li>
-        </ul>
-      </div>
-
-      <div class="service-panel twist" data-aos="fade-up" data-aos-delay="200">
-        <div class="service-header">
-          <i class="fas fa-flask-vial"></i>
-          <span class="service-number">03</span>
-        </div>
-        <h3>Chemical Treatments</h3>
-        <p>Injecting durability into the DNA of your structures.</p>
-        <ul class="service-check-list">
-          <li><i class="fas fa-check"></i> Concrete Remediation</li>
-          <li><i class="fas fa-check"></i> Chronic Crack Injection</li>
-          <li><i class="fas fa-check"></i> Surface Hardening</li>
-          <li><i class="fas fa-check"></i> Durability Additives</li>
-        </ul>
-      </div>
-
-      <div class="service-panel explode" data-aos="fade-up">
-        <div class="service-header">
-          <i class="fas fa-compass-drafting"></i>
-          <span class="service-number">04</span>
-        </div>
-        <h3>Specialized Finishing</h3>
-        <p>Marrying aesthetics with structural functionality.</p>
-        <ul class="service-check-list">
-          <li><i class="fas fa-check"></i> Custom Aluminum Works</li>
-          <li><i class="fas fa-check"></i> Technical Carpentry</li>
-          <li><i class="fas fa-check"></i> Floor Polishing & Restoration</li>
-          <li><i class="fas fa-check"></i> Pavement Protection</li>
-        </ul>
-      </div>
-
-      <div class="service-panel glide" data-aos="fade-up" data-aos-delay="100">
-        <div class="service-header">
-          <i class="fas fa-bolt-lightning"></i>
-          <span class="service-number">05</span>
-        </div>
-        <h3>Utilities & MEP</h3>
-        <p>Essential systems integration for industrial facilities.</p>
-        <ul class="service-check-list">
-          <li><i class="fas fa-check"></i> Electrical Infrastructure</li>
-          <li><i class="fas fa-check"></i> Plumbing & Sanitary</li>
-          <li><i class="fas fa-check"></i> HVAC Support</li>
-          <li><i class="fas fa-check"></i> Surface Protection</li>
-        </ul>
-      </div>
-
-      <div class="service-panel dissolve" data-aos="fade-up" data-aos-delay="200">
-        <div class="service-header">
-          <i class="fas fa-users-gear"></i>
-          <span class="service-number">06</span>
-        </div>
-        <h3>Project Support</h3>
-        <p>Professional expertise for complex project lifecycles.</p>
-        <ul class="service-check-list">
-          <li><i class="fas fa-check"></i> Specialized Manpower</li>
-          <li><i class="fas fa-check"></i> Technical Site Inspection</li>
-          <li><i class="fas fa-check"></i> Maintenance Contracts</li>
-          <li><i class="fas fa-check"></i> Consultancy Services</li>
-        </ul>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <h2 data-aos="zoom-in">Ready to Start Your Project?</h2>
-      <p data-aos="fade-up" data-aos-delay="200">Get a technical consultation and quote from our engineering team.</p>
-      <a href="contact.html" class="btn-primary" data-aos="fade-up" data-aos-delay="400">Get a Quote Now</a>
-    </div>
-  </section>
-
-  <!-- WhatsApp -->
   <a href="https://wa.me/96897666695" target="_blank" class="whatsapp-modern">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- Footer -->
-  <footer class="modern-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <h3 class="accent-gold">CLOUDS MODERN SPC</h3>
-        <p>Sohar's leader in specialized engineering.</p>
-      </div>
-      <div class="footer-info">
-        <p><i class="fas fa-phone" style="color:var(--gold)"></i> +968 97666695</p>
-        <p><i class="fas fa-location-dot" style="color:var(--gold)"></i> Sohar, Oman</p>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      &copy; 2026 Clouds Modern SPC. All rights reserved.
-    </div>
-  </footer>
-
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1200, once: true });
+    AOS.init({ duration: 1000, once: true });
 
-    // Menu mobile toggle (exactement comme ton code original)
-    const toggle = document.getElementById('mobile-toggle');
+    const header = document.getElementById('morph-header');
+    const mobileToggle = document.getElementById('mobile-toggle');
     const overlay = document.getElementById('mobile-overlay');
-    const navLinks = document.querySelectorAll('.mobile-nav-links a');
+    const body = document.body;
 
-    function toggleMenu() {
-      toggle.classList.toggle('change');
-      overlay.classList.toggle('open');
-      document.body.classList.toggle('no-scroll');
-    }
-    toggle.onclick = toggleMenu;
-    navLinks.forEach(link => link.onclick = toggleMenu);
-    window.onclick = (e) => { if (e.target == overlay) toggleMenu(); };
-
-    // Parallax néon au scroll
     window.addEventListener('scroll', () => {
-      const scroll = window.scrollY * 0.08;
-      document.querySelectorAll('.neon-icon').forEach((icon, i) => {
-        const offset = i * 20;
-        icon.style.transform = `translateY(${scroll + offset}px) rotate(${scroll * 0.02}deg)`;
-      });
+      if (window.scrollY > 60) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
     });
 
-    // Observer pour déclencher les animations inattendues des cartes
-    const panels = document.querySelectorAll('.service-panel');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2, rootMargin: '0px 0px -100px 0px' });
+    mobileToggle.addEventListener('click', () => {
+      mobileToggle.classList.toggle('change');
+      overlay.classList.toggle('open');
+      body.classList.toggle('menu-open');
+    });
 
-    panels.forEach(panel => observer.observe(panel));
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        mobileToggle.classList.remove('change');
+        overlay.classList.remove('open');
+        body.classList.remove('menu-open');
+      }
+    });
   </script>
 </body>
 </html>
